@@ -840,7 +840,7 @@ print(a.difference(b))  ##加difference就變成集合
 print(bruss^wruss)  ##找出兩個的內容不相同 並列印
 print(a<=b)
 print(a.issubset(b))
-
+print(bruss<=wruss)
  
 
 
