@@ -781,7 +781,7 @@
 #                 if letter in vowels}  
 # print(vowel_counts)  #兩個單字 印出有幾個字母重疊
     
-####################################  135
+####################################  135 136 137 138 139 140 141
 # empty_set = set()
 # print(empty_set)
 # even_numbers = {0, 2, 4, 6, 8}
@@ -841,6 +841,30 @@ print(bruss^wruss)  ##找出兩個的內容不相同 並列印
 print(a<=b)
 print(a.issubset(b))
 print(bruss<=wruss)
+print(a<=a)
+print(a.issubset(a)) ###issubset變成不可集合
+print(a<b)
+print(a<a)
+print(bruss<wruss)
+print(a>=b)
+print(a.issuperset(b)) ###superset超集合是子集合的相反
+print(wruss>=bruss)
+print(a>=a)
+print(a.issuperset(a))###任何集合都是它自己的超集合
+print(a>b)
+print(wruss>bruss)
+print(a>a)  #############不可能自己是超集合
+a_set = {number for number in range(1,6) if number % 3 ==1}
+print(a_set)
+print(frozenset([3, 2, 9])) ########用frozenset = 冰凍凝固
+print(frozenset(set([1, 3, 2])))
+print(frozenset({3, 1, 2}))
+print(frozenset((2, 1, 3)))
+fs = frozenset([3, 1, 2])
+print(fs)
+print(fs.add(3))####用frozenset = 冰凍凝固 就無法用add加入
+
+
  
 
 
