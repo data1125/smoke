@@ -802,71 +802,81 @@
 # funriture = set(("sofa", "ottoman", "table"))
 # for piece in funriture:
 #     print(piece) ####for加set印出也是無順序
-drinks = {
-    "martini": {"vodka", "vermouth"},
-    "black russian": {"vodka", "kahlua", "coffee"},
-    "white russian": {"cream", "kahlua", "vodka"},
-    "manhattan": {"rye", "vermouth", "bitters"},
-    "screwdriver": {"orange juice", "vodka"}
-}
-# for  name, contents in drinks.items():
-#     if "vodka" in contents:  #####找出有vodka
-#         print(name)
+# drinks = {
+#     "martini": {"vodka", "vermouth"},
+#     "black russian": {"vodka", "kahlua", "coffee"},
+#     "white russian": {"cream", "kahlua", "vodka"},
+#     "manhattan": {"rye", "vermouth", "bitters"},
+#     "screwdriver": {"orange juice", "vodka"}
+# }
+# # for  name, contents in drinks.items():
+# #     if "vodka" in contents:  #####找出有vodka
+# #         print(name)
 
-# for name, contents in drinks.items():
-#     if "vodka" in contents and not ("vermouth" in contents or "cream" in contents):
-#         print(name)   ###找出vodka並挑出內容有 "vermouth" "cream"就不印出
+# # for name, contents in drinks.items():
+# #     if "vodka" in contents and not ("vermouth" in contents or "cream" in contents):
+# #         print(name)   ###找出vodka並挑出內容有 "vermouth" "cream"就不印出
 
-# for name, contents in drinks.items():
-#     if contents & {"vermouth", "orange juice"}:
-#         print(name)   ##找出有vermouuth和orange 
+# # for name, contents in drinks.items():
+# #     if contents & {"vermouth", "orange juice"}:
+# #         print(name)   ##找出有vermouuth和orange 
 
-# for name,contents in drinks.items():
-#     if "vodka" in contents and not contents & {"vermouth", "cream"}:
-#         print(name)
+# # for name,contents in drinks.items():
+# #     if "vodka" in contents and not contents & {"vermouth", "cream"}:
+# #         print(name)
 
-bruss = drinks["black russian"]  ####black  title
-wruss = drinks["white russian"]  ####white  title
-a = {1100, 1100, 1, 1100}
-b = {10, 1100}
-print(a&b)  ####找出兩個的內容相同  並列印
-print(a.intersection(b))
-print(bruss&wruss)  ##找出兩個的內容相同 並列印
-print(bruss|wruss)  ##印出兩個的內容
-print(a|b)  ###a和b 印出內容不相同 
-print(a.union(b))
-print(a-b)   ###a-b 找出兩個的內容相 並列印 a 剩的內容  如果是b-a 就印出 b 剩的內容
-print(a.difference(b))  ##加difference就變成集合
-print(bruss^wruss)  ##找出兩個的內容不相同 並列印
-print(a<=b)
-print(a.issubset(b))
-print(bruss<=wruss)
-print(a<=a)
-print(a.issubset(a)) ###issubset變成不可集合
-print(a<b)
-print(a<a)
-print(bruss<wruss)
-print(a>=b)
-print(a.issuperset(b)) ###superset超集合是子集合的相反
-print(wruss>=bruss)
-print(a>=a)
-print(a.issuperset(a))###任何集合都是它自己的超集合
-print(a>b)
-print(wruss>bruss)
-print(a>a)  #############不可能自己是超集合
-a_set = {number for number in range(1,6) if number % 3 ==1}
-print(a_set)
-print(frozenset([3, 2, 9])) ########用frozenset = 冰凍凝固
-print(frozenset(set([1, 3, 2])))
-print(frozenset({3, 1, 2}))
-print(frozenset((2, 1, 3)))
-fs = frozenset([3, 1, 2])
-print(fs)
-print(fs.add(3))####用frozenset = 冰凍凝固 就無法用add加入
+# bruss = drinks["black russian"]  ####black  title
+# wruss = drinks["white russian"]  ####white  title
+# a = {1100, 1100, 1, 1100}
+# b = {10, 1100}
+# print(a&b)  ####找出兩個的內容相同  並列印
+# print(a.intersection(b))
+# print(bruss&wruss)  ##找出兩個的內容相同 並列印
+# print(bruss|wruss)  ##印出兩個的內容
+# print(a|b)  ###a和b 印出內容不相同 
+# print(a.union(b))
+# print(a-b)   ###a-b 找出兩個的內容相 並列印 a 剩的內容  如果是b-a 就印出 b 剩的內容
+# print(a.difference(b))  ##加difference就變成集合
+# print(bruss^wruss)  ##找出兩個的內容不相同 並列印
+# print(a<=b)
+# print(a.issubset(b))
+# print(bruss<=wruss)
+# print(a<=a)
+# print(a.issubset(a)) ###issubset變成不可集合
+# print(a<b)
+# print(a<a)
+# print(bruss<wruss)
+# print(a>=b)
+# print(a.issuperset(b)) ###superset超集合是子集合的相反
+# print(wruss>=bruss)
+# print(a>=a)
+# print(a.issuperset(a))###任何集合都是它自己的超集合
+# print(a>b)
+# print(wruss>bruss)
+# print(a>a)  #############不可能自己是超集合
+# a_set = {number for number in range(1,6) if number % 3 ==1}
+# print(a_set)
+# print(frozenset([3, 2, 9])) ########用frozenset = 冰凍凝固
+# print(frozenset(set([1, 3, 2])))
+# print(frozenset({3, 1, 2}))
+# print(frozenset((2, 1, 3)))
+# fs = frozenset([3, 1, 2])
+# print(fs)
+# print(fs.add(3))####用frozenset = 冰凍凝固 就無法用add加入
 
-
- 
-
+########################################142
+marx_list = ["Groucho", "Chico", "Harpo"]
+marx_tuple = ("Groucho", "Chico", "Harpo")
+marx_dict = {"Groucho": "banjo", "Chico": "piano", "Harpo": "harp"}
+marx_set = {"Groucho", "Chico", "Harpo"}
+print(marx_list[2])
+print(marx_tuple[2])
+print(marx_dict["Harpo"])
+print(marx_set)    #####如果要印出Chico 要編寫if "Chico" in marx_set:  print("Chico")
+print("Harpo" in marx_list)
+print("Harpo" in marx_tuple)
+print("Harpo" in marx_dict)
+print("Harpo" in marx_set)
 
 
 
