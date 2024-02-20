@@ -864,36 +864,69 @@
 # print(fs)
 # print(fs.add(3))####用frozenset = 冰凍凝固 就無法用add加入
 
-########################################142
-marx_list = ["Groucho", "Chico", "Harpo"]
-marx_tuple = ("Groucho", "Chico", "Harpo")
-marx_dict = {"Groucho": "banjo", "Chico": "piano", "Harpo": "harp"}
-marx_set = {"Groucho", "Chico", "Harpo"}
-print(marx_list[2])
-print(marx_tuple[2])
-print(marx_dict["Harpo"])
-print(marx_set)    #####如果要印出Chico 要編寫if "Chico" in marx_set:  print("Chico")
-print("Harpo" in marx_list)
-print("Harpo" in marx_tuple)
-print("Harpo" in marx_dict)
-print("Harpo" in marx_set)
+########################################142  143
+# marx_list = ["Groucho", "Chico", "Harpo"]
+# marx_tuple = ("Groucho", "Chico", "Harpo")
+# marx_dict = {"Groucho": "banjo", "Chico": "piano", "Harpo": "harp"}
+# marx_set = {"Groucho", "Chico", "Harpo"}  ###用{} 無法只編寫print印出一個單字
+# print(marx_list[2])
+# print(marx_tuple[2])
+# print(marx_dict["Harpo"])
+# print(marx_set)    #####如果要印出Chico 要編寫if "Chico" in marx_set:  print("Chico")
+# # print("Harpo" in marx_list)
+# # print("Harpo" in marx_tuple)
+# # print("Harpo" in marx_dict)
+# # print("Harpo" in marx_set)
 
+# marxes = ["Groucho", "Chico", "Harpo"]
+# pythons = ["Chapman", "Cleese", "Gilliam", "jones", "Palin"]
+# stooges = ["Moe", "Curly", "Larry"]
+# # tuple_of_lists = marxes, pythons, stooges  ###三個串列當作一個tuple  ()
+# # print(tuple_of_lists)  
+# # list_of_lists = [marxes, pythons, stooges]  ###三個串列當作list []
+# # print(list_of_lists)
+# dict_of_lists = {"Marxes": marxes, "pythons": pythons, "stooges": stooges} ##{}
+# print(dict_of_lists)
 
+# houses = {
+#     (44.79, -93.14, 285): "My House",
+#     (38.89, -77.03, 13): "the white house"
+# }
+# print(houses)
+################################  8.1
+# e2f = {
+#     "dog": "chien", 
+#     "cat": "chat", 
+#     "walrus": "morse"
+# }
+# print(e2f)
+################################  8.2
+# for name, contents in e2f.items():
+#     if "morse" in contents:
+#         print(name)
+################################  8.3
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+################################  8.4
+# print(e2f.get("dog"))
+################################  8.5
+# print(e2f.keys())
+################################  8.6
+life = {
+    "animals": {
+    "cats": ["Henri", "Grumpy", "Lucy"],
+    "octopi": {}, 
+    "emus":   {}                                                    
+    },
+    "plants": {},
+    "other": {} 
+}
+###############################   8.7
+# for i in life:
+#     print(i)
+###############################   8.8
+# print(life.get("animals"))
+###############################   8.9
+print(life["animals"]["cats"])  ###非常重要 非常重要 取得包中包
 
 
 
