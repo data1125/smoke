@@ -926,11 +926,24 @@ life = {
 ###############################   8.8
 # print(life.get("animals"))
 ###############################   8.9
-print(life["animals"]["cats"])  ###非常重要 非常重要 取得包中包
-
-
-
-
+# print(life["animals"]["cats"])  ###非常重要 非常重要 取得包中包
+###############################   8.10
+# squares = {key: key*key for key in range(10)}  ###
+# print(squares)##{0: 0, 1: 1, 2: 4, 3: 9, 4: 16, 5: 25, 6: 36, 7: 49, 8: 64, 9: 81}
+###############################   8.11
+# odd = {number for number in range(10) if number % 2 == 1}
+# print(odd)  ##印出奇數1.3.5.7.9     
+###############################   8.12
+# for thing in ("got %s" % number  for number in range(10)): ##
+#     print(thing)##直行印出0-9, 用()順序印出0-9 用{}隨機印出0-9
+###############################   8.13
+keys = ("opimist", "pessimist", "troll")
+values =(
+    "The glass is half full",
+    "Thre glass is half empty",
+    "How did you get a glass?"
+)
+print(dict (zip(keys, values)))
 
 
 
