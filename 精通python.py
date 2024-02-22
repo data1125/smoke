@@ -935,16 +935,89 @@ life = {
 # print(odd)  ##印出奇數1.3.5.7.9     
 ###############################   8.12
 # for thing in ("got %s" % number  for number in range(10)): ##
-#     print(thing)##直行印出0-9, 用()順序印出0-9 用{}隨機印出0-9
+#     print(thing)##直行印出0-9, 用()順序印出0-9 用{}隨機排序印出0-9
 ###############################   8.13
-keys = ("opimist", "pessimist", "troll")
-values =(
-    "The glass is half full",
-    "Thre glass is half empty",
-    "How did you get a glass?"
-)
-print(dict (zip(keys, values)))
+# keys = ("opimist", "pessimist", "troll")
+# values =(
+#     "The glass is half full",
+#     "Thre glass is half empty",
+#     "How did you get a glass?"
+# )###用()順序印出來  用{}隨機排序印出來   (dict =  key-value pairs) 鍵值對
+# moive=dict (zip(keys, values))
+# print(moive)
+###############################   8.14
+# titles = ["Crenture of Habit", "Crewel Fate", "Sharks On a plane"]
+# plots = ["A nun turns into a monster", "A haunten yarn shop", "Check your exits"]
+# moive = dict(zip(titles, plots))
+# print(moive)
+##############################################################################################
+##############################145
+# def do_nothing():
+#     pass
+# print(do_nothing())
 
+# def make_a_sound():
+#     print("quack")
+# print(make_a_sound())
 
+# def agree():
+#     return False
+# if agree():
+#     print("splendid")
+# else:
+#     print("That was unexpected")
 
+# def echo(anything):
+#     return anything + " "  + anything
+# print(echo("Rumplestiltskin"))
 
+# def commentary(color):
+#     if color == "red":
+#         return "It's a tomato."
+#     elif color == "green":
+#         return "It's a green peper,"
+#     elif color == "bee purple":
+#         return "I don't know what it is, but only bees can see it."
+#     else:
+#         return "I've never heard of the color" + color + "."
+# comment = commentary("blue")
+# print(comment)
+
+# thing = None  ######None是有用的,雖然當它被當成布林來估值,會被視為false
+# if thing:
+#     print("It's some thing")
+# else:
+#     print("It's no thing")
+
+# thing = None 
+# if thing is None:
+#     print("It's nothing")
+# else:
+#     print("It's something")
+
+# def whatis(thing):
+#     if thing is None:
+#         print(thing, "is None")
+#     elif thing:
+#         print(thing, "is True")
+#     else:
+#         print(thing, "is False")
+# print(whatis(None))
+# print(whatis(True))
+# print(whatis(False))
+# print(whatis(0))
+# print(whatis(0.0))
+# print(whatis(""))
+# print(whatis(''))
+# print(whatis(''''''))
+# print(whatis(()))
+# print(whatis([]))
+# print(whatis({}))
+# print(whatis(set()))                    
+
+def menu(wine, entree, dessert):
+    return{"wine": wine, "entree": entree, "dessert": dessert}
+print(menu("chardonnay", "chicken", "cake"))
+print(menu("beef", "bagel", "bordeaux", "wine"))
+print(menu(entree="beef", dessert = "bagel", wine = "bordeaux"))##避免忘記位子在哪,可以這樣編寫
+print(menu("frontenac", dessert = "flan", entree = "fish",))
