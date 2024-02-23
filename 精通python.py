@@ -951,7 +951,7 @@ life = {
 # moive = dict(zip(titles, plots))
 # print(moive)
 ##############################################################################################
-##############################145
+##############################145 146 147 148 149 150 151 152 153 154 
 # def do_nothing():
 #     pass
 # print(do_nothing())
@@ -1015,9 +1015,64 @@ life = {
 # print(whatis({}))
 # print(whatis(set()))                    
 
-def menu(wine, entree, dessert):
-    return{"wine": wine, "entree": entree, "dessert": dessert}
-print(menu("chardonnay", "chicken", "cake"))
-print(menu("beef", "bagel", "bordeaux", "wine"))
-print(menu(entree="beef", dessert = "bagel", wine = "bordeaux"))##避免忘記位子在哪,可以這樣編寫
-print(menu("frontenac", dessert = "flan", entree = "fish",))
+# def menu(wine, entree, dessert):
+#     return{"wine": wine, "entree": entree, "dessert": dessert}
+# print(menu("chardonnay", "chicken", "cake"))
+# print(menu("beef", "bagel", "bordeaux", ))
+# print(menu(entree="beef", dessert = "bagel", wine = "bordeaux"))##避免忘記位子在哪,可以這樣編寫
+# print(menu("frontenac", dessert = "flan", entree = "fish",))
+
+# def buggy(arg, result=[]):
+#     result.append(arg) #印出一次a後,會留下a,繼續印第二次b,所以是[a] [a, b]
+#     print(result)
+# buggy("a")
+# buggy("b")
+
+# def works(arg):
+#     result = []
+#     result.append(arg) #會開印出來,所以是["a"] ["b"]
+#     return result
+# print(works("a"))
+# print(works("b"))
+
+# def nonbuggy(arg, result=None):
+#     if result is None:
+#         result = []
+#     result.append(arg)####修正的做法,傳入別的東西來代表第一次呼叫
+#     print(result)
+# nonbuggy("a")
+
+# def print_args(*args):#args是一种用于函数定义中的特殊语法，它允许函数接受任意数量的位置参数，并将它们作为一个元组传递给函数体内部的代码。在你的例子中，使用args使得函数print_args可以接受任意数量的位置参数，而不限制其数量
+#     print("Positional tuple:", args)#
+# # print_args() ##( )不傳入引數時,args不會提供任何東西
+# print_args(3, 2, 1, "wait!", "uh....")
+
+# def print_more(required1, required2, *args):###第三個後都是*args的
+    # print("Need this one:", required1)
+    # print("Need this one too:", required2)
+    # print("All the rest:", args)
+# print_more("cap", "gloves", "scarf", "monocle", "mustache wax")
+
+# def print_args(*args):
+#     print("Positional tuple:", args)
+# print_args(2, 5, 7, "x")
+# args = (2, 5, 7, "x")
+# print_args(args) ##印出來會多一個()和,
+# print_args(*args)
+# *args #SyntaxError: can't use starred expression here
+
+# def print_kwargs(**kwargs):
+#     print("keyword arguments:", kwargs)
+# print_kwargs()
+# print_kwargs(wine = "merlot", entree = "mutton", dessert = "macaroon")
+
+
+# def example_func(*args):
+#     print("Positional arguments:", args)#Positional arguments=位置參數要加*
+# example_func(1, 2, 3, 4, 5)
+# 输出：Positional arguments: (1, 2, 3, 4, 5)
+# def example_func(**kwargs):  #kwargs 適合用於字典
+#     print("Keyword arguments:", kwargs)#Keyword arguments=關鍵字參數要加** 適合用於字典
+# example_func(a=1)   ##要用()
+# 输出：Keyword arguments: {'a': 1, 'b': 2, 'c': 3}
+
