@@ -1068,11 +1068,66 @@ life = {
 
 
 # def example_func(*args):
-#     print("Positional arguments:", args)#Positional arguments=位置參數要加*
+#     print("Positional arguments:", args)#Positional arguments=位置參數要加 *
 # example_func(1, 2, 3, 4, 5)
 # 输出：Positional arguments: (1, 2, 3, 4, 5)
 # def example_func(**kwargs):  #kwargs 適合用於字典
-#     print("Keyword arguments:", kwargs)#Keyword arguments=關鍵字參數要加** 適合用於字典
+#     print("Keyword arguments:", kwargs)#Keyword arguments=關鍵字參數要加 ** 適合用於字典
 # example_func(a=1)   ##要用()
 # 输出：Keyword arguments: {'a': 1, 'b': 2, 'c': 3}
+
+#######################################################155
+# def print_data(data, *, start=0, end = 1000):
+#     for value in (data[start:end]):
+#         print(value)
+# data = ["a", "b", "c", "d", "e", "f"]
+# print_data(data)
+# print_data(data, start=4)
+# print_data(data, end=2)
+
+# outside = ["one", "fine", "day"]
+# def mangle(arg):
+#     arg[1] = "terrible!"
+# # print(outside) #打outside  只會印出one fine day
+# mangle(outside)  #要加入這一行 才會印出one terrible day
+# print(outside)
+
+# def echo(anything):
+#     "echo returns its input argument"
+#     return anything
+# def print_if_ture(thing, check):
+#     """prints the first argument if a second argument is true.
+#     The operation is:
+#      1. check whether the *second* argument is true.
+#      2. If it is, print the *first* argument.
+#     """
+#     if check:
+#         print(thing, check)
+# help(echo)
+# print(echo.__doc__)
+
+# def answer():  #########函式是一級公民
+#     print(42)  
+# answer() #必須要打answer()才會印出42
+# def run_something(func):
+#     func()
+# run_something(answer)
+# print(type(run_something))
+
+# def add_args(arg1, arg2):
+#     print(arg1, arg2)
+#     print(f"add_args({arg1}, {arg2})") #一定要加{} 才會印出add_args(5, 9)
+# add_args(33,22) ##我自己想的
+# print(type(add_args))
+# def run_something_with_args(fun, arg1, arg2):
+#     fun(arg1, arg2)
+# run_something_with_args(add_args, 5,9)
+
+def sum_args(*args):
+    return sum(args)
+# def run_with_positional_args(func, *args):
+#     return func(*args)
+print(sum_args(1, 2, 3, 4)) #把數字往上開始丟
+
+
 
