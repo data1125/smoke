@@ -1076,7 +1076,7 @@ life = {
 # example_func(a=1)   ##要用()
 # 输出：Keyword arguments: {'a': 1, 'b': 2, 'c': 3}
 
-#######################################################155
+#################################155  156  157  158 159 160 161
 # def print_data(data, *, start=0, end = 1000):
 #     for value in (data[start:end]):
 #         print(value)
@@ -1123,11 +1123,79 @@ life = {
 #     fun(arg1, arg2)
 # run_something_with_args(add_args, 5,9)
 
-def sum_args(*args):
-    return sum(args)
-# def run_with_positional_args(func, *args):
+# def sum_args(*args):
+#     return sum(args) #把數字加總, 丟回print
+# def run_with_positional_args(func, *args): #在把數字丟到sum
 #     return func(*args)
-print(sum_args(1, 2, 3, 4)) #把數字往上開始丟
+# print(run_with_positional_args(sum_args, 1, 2, 3, 4)) #把數字丟到func
+# print(sum_args(1, 2, 3, 4)) #把func和def run_with刪除 直接打這一行也能印出 10
 
+# def outer(a, b):
+#     def inner(c, d):
+#         return c + d
+#     return inner(a, b)
+# print(outer(4, 7))
 
+# def knights(saying):
+#     def inner(quote):
+#         return "we are the knights who say: '%s' " %quote
+#     return inner(saying)
+# print(knights("Ni!"))
 
+# def knights2(saying):
+#     def inner2():
+#         return "we are the knights who say: '%s'" % saying
+#     return inner2   ###它是一個closure 一種動態建立 並且記得它來自哪裡
+
+# a = knights2("Duck")
+# b = knights2("Hasenpfeffer")
+# print(type(a))
+# print(type(b))
+# print(a) #它們是函式, 但它們也是closure
+# print(b)
+# print(a()) #它們會記得自己被knights2建立時使用saying
+# print(b())
+
+####################################161 
+# def edit_story(words, func):
+#     for word in words:
+#         print(func(word))
+# stairs = ["thud", "meow", "thud", "hiss"]
+# def enliven(word):
+#     return word.capitalize() + '!'
+# edit_story(stairs, enliven)
+# edit_story(stairs, lambda word: word.capitalize() + "!")#只要用這一行 就不用加def enliven
+# edit_story(stairs, lambda word: word) #不加title大寫就這樣寫
+
+# print(sum(range(1, 101)))
+
+def my_range(first = 0, last = 0, step = 1): 
+    number = first 
+    while number < last:
+        yield number 
+        number += step
+print(my_range)
+ranger = my_range(1, 10)#first 開始1  last 最後9  step 間隔1
+print(ranger)
+for x in ranger:
+    print(x) #迭代 1 2 3 4
+
+# def my_generator():##################chat GPT
+#     yield 1
+#     yield 2
+#     yield 3
+# gen = my_generator()
+# print(next(gen))  # 输出：1
+# print(next(gen))  # 输出：2
+# print(next(gen))  # 输出：3
+# def my_generator():  ################我修改chat GPT
+#     yield int(input("請輸入"))
+#     yield int(input("請輸入"))
+#     yield int(input("請輸入"))
+# gen = my_generator()
+# user = next(gen)  # 获取生成器中的值
+# user1 = next(gen) #三個yield 要用next
+# user2 = next(gen) 
+# print(f"你輸入的數字是 {user}")
+# print(f"你輸入的數字是 {user1}")
+# print(f"你輸入的數字是 {user2}")
