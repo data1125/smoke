@@ -1156,7 +1156,7 @@ life = {
 # print(a()) #它們會記得自己被knights2建立時使用saying
 # print(b())
 
-####################################161 
+####################################161 162 163 164 165 166
 # def edit_story(words, func):
 #     for word in words:
 #         print(func(word))
@@ -1169,16 +1169,13 @@ life = {
 
 # print(sum(range(1, 101)))
 
-def my_range(first = 0, last = 0, step = 1): 
-    number = first 
-    while number < last:
-        yield number 
-        number += step
-print(my_range)
-ranger = my_range(1, 10)#first 開始1  last 最後9  step 間隔1
-print(ranger)
-for x in ranger:
-    print(x) #迭代 1 2 3 4
+
+# ranger = my_range(1, 10)#first 開始1  last 最後9  step 間隔1
+# print(ranger)
+# for x in ranger:
+    # print(x) #迭代 1 2 3 4
+# for try_again in ranger:
+#     print(try_again)
 
 # def my_generator():##################chat GPT
 #     yield 1
@@ -1199,3 +1196,82 @@ for x in ranger:
 # print(f"你輸入的數字是 {user}")
 # print(f"你輸入的數字是 {user1}")
 # print(f"你輸入的數字是 {user2}")
+
+# genobj = (pair for pair in zip (["a", "b"], ["1", "2"]))
+# print(genobj)
+# for thing in genobj:
+#     print(thing)
+
+# def document_it(func):
+#     def new_function(*args, **kwargs):
+#         print("Running function:", func.__name__)
+#         print("Positional arguments:", args)
+#         print("Keyword arguments:", kwargs)
+#         result = func(*args, **kwargs)
+#         print("Result:", result)
+#         return result 
+#     return new_function
+# def add_ints(a, b):
+#     return a + b
+# print(add_ints(3, 5))
+
+# cooler_add_ints = document_it(add_ints)
+# print(cooler_add_ints(3, 5))
+
+# @document_it
+# def add_ints(a, b):
+#     return a + b
+# print(add_ints(3, 5))
+
+# def square_it(func):
+#     def new_function(*args, **kwargs):
+#         result = func(*args, **kwargs)
+#         return result * result
+#     return new_function
+# @document_it
+# @square_it
+# def add_ints(a, b):
+#     return a + b
+# print(add_ints(3, 5))
+
+# @square_it
+# @document_it
+# def add_ints(a, b):
+#     return a + b
+# print(add_ints(3, 5))
+
+#########################################167
+# animal = "fruitbat"
+# def print_global():
+#     print("insde print_global:", animal)
+# print("at the top level:", animal)
+# print_global()
+
+# def change_and_print_global():
+#     print("inside change_and_print_global:", animal)
+#     animal = "wombat"
+#     print("after the change:", animal)
+# change_and_print_global()
+
+# def change_local():
+#     animal = "wombat"
+#     print("inside change_local:", animal, id(animal))
+# change_local()
+# print(animal)
+# print(id(animal))
+
+# animal = "fruitbat"
+# def change_and_print_global():
+#     global animal
+#     animal = "wombat"
+#     print("inside change_and_print_global:", animal)
+# print(animal)
+# change_and_print_global()
+
+# animal = "fruitbat"
+# def change_local():
+#     animal = "wombat"  #區域變數
+#     print("locals", locals())
+# print(animal)
+# change_local()
+# print("globals:", globals()) #稍微重新排列, 以便顯示
