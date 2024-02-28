@@ -1240,7 +1240,7 @@ life = {
 #     return a + b
 # print(add_ints(3, 5))
 
-#########################################167
+#########################################167 168 169 170
 # animal = "fruitbat"
 # def print_global():
 #     print("insde print_global:", animal)
@@ -1275,3 +1275,44 @@ life = {
 # print(animal)
 # change_local()
 # print("globals:", globals()) #稍微重新排列, 以便顯示
+
+# def amazing():
+#     """This is the amazing function.
+#     want to see it again?"""
+#     print("This function is named:", amazing.__name__)
+#     print("And its docstring is:", amazing.__doc__)
+# amazing()
+# def dive():
+#     return dive()
+# dive()
+
+# def flatten(lol):
+#     for item in lol:
+#         if isinstance(item, list):
+#             for subitem in flatten(item):
+#                 yield subitem
+#         else:
+#             yield item  #以上程式能讓123456789整齊排列
+# lol = [1, 2, [3, 4, 5], [6, [7, 8, 9], []]]
+# print(flatten(lol))
+# print(list(flatten(lol)))
+# def flatten(lol):
+#     for item in lol:
+#         if isinstance(item, list):
+#             yield from flatten(item)
+#         else:
+#             yield item  #更簡化寫
+# lol = [1, 2, [3, 4, 5], [6, [7, 8, 9], []]]
+# print(list(flatten(lol)))
+
+#####################################171
+# short_list = [1, 2, 3]
+# position = 5
+# print(short_list[position])  #以上錯誤範例
+short_list = [1, 2, 3]
+position = 5
+try:
+    short_list[position]
+except:
+    print("Need a position between 0 and", len(short_list), "but got", position)
+          
