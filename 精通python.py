@@ -1309,10 +1309,54 @@ life = {
 # short_list = [1, 2, 3]
 # position = 5
 # print(short_list[position])  #以上錯誤範例
-short_list = [1, 2, 3]
-position = 5
-try:
-    short_list[position]
-except:
-    print("Need a position between 0 and", len(short_list), "but got", position)
+# short_list = [1, 2, 3]
+# position = 5
+# try:
+#     short_list[position] # try內有錯誤會丟到except, try內沒有錯誤直接跳過except
+# except:
+#     print("Need a position between 0 and", len(short_list)-1, "but got", position)
           
+# short_list = [1, 2, 3]
+# while True:
+#     value = input("Position[q to quit]?")
+#     if value == "q":
+#         break
+#     try:
+#         position = int(value)
+#         print(short_list[position])
+#     except IndexError as err:
+#         print("Bad index:", position)
+#     except Exception as other:
+#         print("Something else broke:", other)
+
+# class UppercaseException(Exception):
+#     pass
+# words = ["eenie", "meenie", "miny", "MO"]
+# for word in words:
+#     if word.isupper():
+#         raise UppercaseException(word)
+# class OopsException(Exception):  ###一定定義OopsException然後pass
+#     pass
+# try:
+#     raise OopsException("panic")
+# except OopsException as exc:
+#     print(exc)
+
+##############################9.1
+# def good():
+#     return ["Harry", "Ron", "Hermione"]
+
+# print(good())
+##############################9.2
+def get_odds():
+    for number in range(1, 10, 2):
+        yield number
+count = 1
+for number in get_odds():
+  
+    if count == 3:
+        print("The third odd number is ", number)
+        break
+    count += 1 #count寫在上面比較慢一步到達
+   
+
