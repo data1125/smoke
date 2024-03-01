@@ -1348,15 +1348,113 @@ life = {
 
 # print(good())
 ##############################9.2
-def get_odds():
-    for number in range(1, 10, 2):
-        yield number
-count = 1
-for number in get_odds():
+# def get_odds():
+#     for number in range(1, 10, 2):
+#         yield number
+# count = 1
+# for number in get_odds():
   
-    if count == 3:
-        print("The third odd number is ", number)
-        break
-    count += 1 #count寫在上面比較慢一步到達
-   
+#     if count == 3:
+#         print("The third odd number is ", number)
+#         break
+#     count += 1 #count寫在上面比較慢一步到達
+###############################9.3
+# def test(func):
+#     def new_func(*args, **kwargs):
+#         print("start")
+#         result = func(*args, **kwargs)  
+#         print("end")
+#         return result
+#     return new_func
+# @test  ##用裝飾品才能呼叫 def test
+# def greeting():
+#     print("Greetings, Earthling")
+# greeting()
+# ###############################9.4
+# class OopsException(Exception):  ###一定定義OopsException然後pass
+#     pass
+# try:
+#     raise OopsException()
+# except OopsException:
+#     print("Caught an oops")
 
+#################################176
+# class Cat():
+#     pass
+# class Cat:
+#     pass
+# a_cat =Cat()
+# another_cat = Cat() ##以上示範錯誤
+
+# class Cat():
+#     pass
+# a_cat = Cat()
+# print(a_cat)
+# another_cat = Cat()
+# print(another_cat)
+
+# a_cat.age = 3
+# a_cat.name = "Mr. Fuzzybuttons"
+# a_cat.nemesis = another_cat
+# a_cat.nemesis.name = "Mr. Bigglesworth"
+# print(a_cat.age)
+# print(a_cat.name)
+# print(a_cat.nemesis)
+# print(a_cat.nemesis.name)
+
+# class Cat:
+#     def __init__(self):
+#         pass
+
+# class Cat():
+#     def __init__(self, name):
+#         self.name = name
+# furball = Cat("Grumpy")
+# print("Our latest addition:" , furball.name)
+
+# class Car():
+#     pass
+# class Yugo(Car):
+#     pass
+# print(issubclass(Yugo, Car))
+# give_me_a_car = Car()
+# give_me_a_yugo = Yugo()
+# print(give_me_a_car)
+# print(give_me_a_yugo)
+
+# class Car():
+#     def exclaim(self):
+#         print("I'm a Car!")
+# class Yugo(Car):
+#     pass
+# give_me_a_car = Car()
+# give_me_a_yugo = Yugo()
+# give_me_a_car.exclaim()
+# give_me_a_yugo.exclaim()
+
+# class Car():
+#     def exclaim(self):
+#         print("I'm a Car!")
+# class Yugo(Car):
+#     def exclaim(self):
+#         print("I'm a Yugo!Much like a Car, but more Yugo-ish.")
+# give_me_a_car = Car()
+# give_me_a_yugo = Yugo()
+# give_me_a_car.exclaim()
+# give_me_a_yugo.exclaim()
+
+class Person():
+    def __init__(self, name):
+        self.name = name
+class MDPerson(Person):
+    def __init__(self, name):
+        self.name = "Doctor " + name
+class JDPerson(Person):
+    def __init__(self, name):
+        self.name = name + ", Esquire"
+person = Person("Fudd")
+doctor = MDPerson("Fudd")
+lawyer = JDPerson("Fudd")
+print(person.name)
+print(doctor.name)
+print(lawyer.name)
