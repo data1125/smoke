@@ -1359,6 +1359,7 @@ life = {
 #         break
 #     count += 1 #count寫在上面比較慢一步到達
 ###############################9.3
+<<<<<<< HEAD
 # def test(func):
 #     def new_func(*args, **kwargs):
 #         print("start")
@@ -1370,6 +1371,19 @@ life = {
 # def greeting():
 #     print("Greetings, Earthling")
 # greeting()
+=======
+def test(func):
+    def new_func(*args, **kwargs):
+        print("start")
+        result = func(*args, **kwargs)  
+        print("end")
+        return result
+    return new_func
+@test  ##用裝飾品才能呼叫 def test
+def greeting():
+    print("Greetings, Earthling")
+greeting()
+>>>>>>> 132258edc4e44295ae26f4c91991d974196e6d77
 # ###############################9.4
 # class OopsException(Exception):  ###一定定義OopsException然後pass
 #     pass
@@ -1378,6 +1392,7 @@ life = {
 # except OopsException:
 #     print("Caught an oops")
 
+<<<<<<< HEAD
 #################################176
 # class Cat():
 #     pass
@@ -1458,3 +1473,6 @@ lawyer = JDPerson("Fudd")
 print(person.name)
 print(doctor.name)
 print(lawyer.name)
+=======
+#################################176
+>>>>>>> 132258edc4e44295ae26f4c91991d974196e6d77
