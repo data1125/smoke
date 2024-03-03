@@ -1446,31 +1446,137 @@ life = {
 # give_me_a_car.exclaim()
 # give_me_a_yugo.exclaim()
 
-# class Car():
-#     def exclaim(self):
-#         print("I'm a Car!")
-# class Yugo(Car):
-#     def exclaim(self):
-#         print("I'm a Yugo!Much like a Car, but more Yugo-ish.")
+class Car():
+    def exclaim(self):
+        print("I'm a Car!")
+class Yugo(Car):
+    def exclaim(self):
+        print("I'm a Yugo!Much like a Car, but more Yugo-ish.")
 # give_me_a_car = Car()
 # give_me_a_yugo = Yugo()
 # give_me_a_car.exclaim()
 # give_me_a_yugo.exclaim()
 
-class Person():
-    def __init__(self, name):
-        self.name = name
-class MDPerson(Person):
-    def __init__(self, name):
-        self.name = "Doctor " + name
-class JDPerson(Person):
-    def __init__(self, name):
-        self.name = name + ", Esquire"
-person = Person("Fudd")
-doctor = MDPerson("Fudd")
-lawyer = JDPerson("Fudd")
-print(person.name)
-print(doctor.name)
-print(lawyer.name)
+# class Person():
+#     def __init__(self, name):
+#         self.name = name
+# class MDPerson(Person):
+#     def __init__(self, name):
+#         self.name = "Doctor " + name
+# class JDPerson(Person):
+#     def __init__(self, name):
+#         self.name = name + ", Esquire"
+# person = Person("Fudd")
+# doctor = MDPerson("Fudd")
+# lawyer = JDPerson("Fudd")
+# print(person.name)
+# print(doctor.name)
+# print(lawyer.name)
 
+# class Car():
+#     def exclaim(self):
+#         print("I'm a Car!")
+# class Yugo(Car):
+#     def exclaim(self):
+#         print("I'm a Yugo! Much like a Car, but more Yugo-ish")
+#     def need_a_push(self):
+#         print("A little help here?")
+# give_me_a_car = Car()
+# give_me_a_yugo = Yugo()
+# give_me_a_yugo.need_a_push() #
+# give_me_a_car.need_a_push()  #通用的Car物件 無法呼叫 
 
+# class Person():  ######   用super() 來取得父類別的幫助
+#     def __init__(self, name):
+#         self.name = name
+
+# class EmailPerson(Person):
+#     def __init__(self, name, email): #使用__init__()呼叫有額外的額外email的參數
+#         super().__init__(name) #super可以繼承Person屬性與方法
+#         self.email = email
+        
+# class EmailPerson(Person):
+#     def __init__(self, name, email):
+#         self.name = name
+#         self.email = email
+# bob = EmailPerson("Bob Frapples", "bob@frapples.com")
+# print(bob.name)
+# print(bob.email)
+
+# class Animal:
+#     def says(self):
+#         return "I speak!"
+# class Horse(Animal):
+#     def says(self):   #如果Horse沒有用says()方法 會使用Animal的says回傳"I speak"
+#         return "Neigh!"
+
+# class Donkey(Animal):
+#     def says(self): #如果Donkey沒有用says()方法 會使用Animal的says回傳"I speak"
+#         return "Hee-haw!"
+
+# class Mule(Donkey, Horse):
+#     pass
+# class Hinny(Horse, Donkey):
+#     pass
+# print(Mule.mro()) #印出來 可以祖宗十八代
+# print(Hinny.mro()) #印出來 可以祖宗十八代
+# mule = Mule()
+# hinny = Hinny()
+# print(mule.says())   #印出Donkey的Hee-haw
+# print(hinny.says())  #印出Horse的Neigh
+
+# class PrettyMixin():
+#     def dump(self):
+#         import pprint
+#         pprint.pprint(vars(self))
+# class Thing(PrettyMixin):
+#     pass
+
+# t = Thing() #一定要擺第一個以下是打印內容
+# t.name = "Nyarlathontep"
+# t.feature = "ichor"
+# t.age = "eldritch"
+# t.tt  = "幹你娘"
+# t.dump() #一定要擺最後一個以上是打印內容
+
+# a_car = Car() ##1449行
+# a_car.exclaim() ##1449行
+# Car.exclaim(a_car) #也可以顛倒過來編寫
+        
+# class Duck():
+#     def __init__(self, input_name):
+#         self.name = input_name
+# fowl = Duck('Daffy')
+# print(fowl.name)
+# fowl.name = "Daphne"
+# print(fowl.name)
+
+# class Duck():
+#     def __init__(self, input_name):
+#         self.hidden_name = input_name
+#     def get_name(self):
+#         print("inside the getter")
+#         return self.hidden_name
+#     def set_name(self, input_name):
+#         print("inside the setter")
+#         self.hidden_name = input_name
+# don = Duck("Donald")
+# print(don.get_name())
+# don.set_name("Donna")
+# print(don.get_name())
+        
+class Duck():
+    def __init__(self, input_name):
+        self.hidden_name = input_name
+    def get_name(self):
+        print("inside the getter")
+        return self.hidden_name
+    def set_name(self, input_name):
+        print("inside the setter")
+        self.hidden_name = input_name
+    name = property(get_name, set_name)
+
+don = Duck("s3")  #印出幹你娘
+print(don.get_name()) #印出getter   一定要加don才打印
+# don.set_name("Donna") #印出setter
+# print(don.get_name()) #印出Donna
