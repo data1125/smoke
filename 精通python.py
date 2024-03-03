@@ -1392,7 +1392,7 @@ life = {
 #     print("Caught an oops")
 
 
-#################################176
+#################################176 177 178 179 180 181 182 183 184 185 186 187 189 190
 # class Cat():
 #     pass
 # class Cat:
@@ -1446,12 +1446,12 @@ life = {
 # give_me_a_car.exclaim()
 # give_me_a_yugo.exclaim()
 
-class Car():
-    def exclaim(self):
-        print("I'm a Car!")
-class Yugo(Car):
-    def exclaim(self):
-        print("I'm a Yugo!Much like a Car, but more Yugo-ish.")
+# class Car():
+#     def exclaim(self):
+#         print("I'm a Car!")
+# class Yugo(Car):
+#     def exclaim(self):
+#         print("I'm a Yugo!Much like a Car, but more Yugo-ish.")
 # give_me_a_car = Car()
 # give_me_a_yugo = Yugo()
 # give_me_a_car.exclaim()
@@ -1565,18 +1565,109 @@ class Yugo(Car):
 # don.set_name("Donna")
 # print(don.get_name())
         
-class Duck():
-    def __init__(self, input_name):
-        self.hidden_name = input_name
-    def get_name(self):
-        print("inside the getter")
-        return self.hidden_name
-    def set_name(self, input_name):
-        print("inside the setter")
-        self.hidden_name = input_name
-    name = property(get_name, set_name)
+# class Duck():
+#     def __init__(self, input_name):
+#         self.hidden_name = input_name
+#     def get_name(self):
+#         print("inside the getter")
+#         return self.hidden_name
+#     def set_name(self, input_name):
+#         print("inside the setter")
+#         self.hidden_name = input_name
+#     name = property(get_name, set_name)
 
-don = Duck("s3")  #印出幹你娘
-print(don.get_name()) #印出getter   一定要加don才打印
+# don = Duck("s3")  #印出幹你娘
+# print(don.get_name()) #印出getter   一定要加don才打印 
 # don.set_name("Donna") #印出setter
 # print(don.get_name()) #印出Donna
+######################以下不同的寫法   
+# don = Duck("Donald")
+# print(don.name)
+# don.name = "Donna"
+# print(don.name)
+########################
+# #####################################190
+# class Duck():
+#     def __init__(self, input_name):
+#         self.hidden_name = input_name
+#     @property
+#     def name(self):
+#         print("inside the getter")
+#         return self.hidden_name
+#     @name.setter
+#     def name(self, input_name):
+#         print("inside the setter")
+#         self.hidden_name = input_name
+# fowl = Duck("幹你娘")
+# print(fowl.name)
+# fowl.name = "Donald"
+# print(fowl.name)
+
+# class Circle():
+#     def __init__(self, radius):
+#         self.radius = radius
+#     @property
+#     def diameter(self):
+#         return 2 * self.radius
+# c = Circle(10)
+# print(c.radius)
+# print(c.diameter)
+# c.radius = 7
+# print(c.diameter)
+# c.diameter = 20  ###只打印 無法修改
+
+# class Duck():
+#     def __init__(self, input_name):
+#         self.__name = input_name
+#     @property
+#     def name(self):
+#         print("inside the getter")
+#         return self.__name
+#     @name.setter
+#     def name (self, input_name):
+#         print("insid the setter")
+#         self.__name = input_name
+# fowl = Duck("Howard")
+# print(fowl.name)
+# fowl.name ="Donald"
+# print(fowl.name)
+# print(fowl__name)  ##無法存取__name屬性
+# print(fowl._Duck__name) ##這樣編寫才能存取
+
+# class Fruit:
+#     color = "red"
+# blueberry = Fruit()
+# print(Fruit.color)
+# print(blueberry.color)
+
+# blueberry.color = "blue"
+# print(blueberry.color)
+# print(Fruit.color)
+
+# Fruit.color = "orange"
+# print(Fruit.color)
+# print(blueberry.color)
+
+# new_fruit = Fruit()
+# print(new_fruit.color)
+
+# class A():
+#     count = 0
+#     def __init__(self):
+#         A.count += 1
+#     def exclaim(self):
+#         print("I'm an A!")
+#     @classmethod
+#     def kids(cls):
+#         print("A has", cls.count, "little objects.")
+# easy_a = A()
+# breezy_a = A()
+# wheezy_a = A()
+# four_a   = A()
+# A.kids()
+
+class CoyoteWeapon():
+    @staticmethod  #裝飾器
+    def commercial():
+        print("This CoyoteWeapon has been brought to you by Acme")
+CoyoteWeapon.commercial()
