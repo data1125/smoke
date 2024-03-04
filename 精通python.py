@@ -1586,7 +1586,7 @@ life = {
 # don.name = "Donna"
 # print(don.name)
 ########################
-# #####################################190
+# #####################################190 191 192 193 194 195
 # class Duck():
 #     def __init__(self, input_name):
 #         self.hidden_name = input_name
@@ -1666,8 +1666,81 @@ life = {
 # four_a   = A()
 # A.kids()
 
-class CoyoteWeapon():
-    @staticmethod  #裝飾器
-    def commercial():
-        print("This CoyoteWeapon has been brought to you by Acme")
-CoyoteWeapon.commercial()
+# class CoyoteWeapon():
+#     @staticmethod  #裝飾器
+#     def commercial():
+#         print("This CoyoteWeapon has been brought to you by Acme")
+# CoyoteWeapon.commercial()
+
+# ###################################195 
+# class Quote():
+#     def __init__(self, person, words):
+#         self.person = person
+#         self.words = words
+#     def who(self):
+#         return self.person
+#     def says(self):
+#         return self.words + "."
+# class QuestionQuote(Quote):
+#     def says(self):
+#         return self.words + "?"
+# class ExclamationQuote(Quote):
+#     def says(self):
+#         return self.words + "!"
+# hunter = Quote("Elmer Fudd", "I'm hunting wabbits")
+# print(hunter.who(), "says:", hunter.says())
+
+# hunted1 = QuestionQuote("Bugs Bunny","what's up, doc")
+# print(hunted1.who(), "says:", hunted1.says())
+
+# hunted2 = ExclamationQuote("Daffy Duck", "It's rabbit season")
+# print(hunted2.who(), "says:", hunted2.says())
+
+# class BabblingBrook():
+#     def who(self):
+#         return "Book"
+#     def says(self):
+#         return "Babble"
+# brook = BabblingBrook()
+# def who_says(obj):
+#     print(obj.who(), "says", obj.says())
+# who_says(hunter)
+# who_says(hunted1)
+# who_says(hunted2)
+
+# class Word():
+#     def __init__(self, text):
+#         self.text = text
+#     def equals(self, word2):
+#         return self.text.lower() == word2.text.lower()
+# first = Word("ha")
+# second = Word("HA")
+# third = Word("eh")
+# print(first.equals(second)) #ha 與 HA的小寫時 是相等的
+# print(first.equals(third)) #eh 與 ha 不相等
+##################################以下不同寫法
+# class Word():
+#     def __init__(self, text):
+#         self.text = text
+#     def __eq__(self, word2):
+#         return self.text.lower() == word2.text.lower()
+# first = Word("ha")
+# second = Word("Ha")
+# third = Word("eh")
+# print(first == second)
+# print(first == third)
+# first = Word("ha")
+# print(first)
+#######################################
+class Word():
+    def __init__(self, text):
+        self.text = text
+    def __eq__(self, word2):
+        return self.text.lower() == word2.text.lower()
+    def __str__(self):
+        return self.text
+    def __repr__(self):
+        return "Word("     + self.text   + ")"
+first = Word("ha")
+print(repr(first))  # 使用 __repr__
+print(str(first))   # 使用 __str__
