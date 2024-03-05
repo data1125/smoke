@@ -1672,7 +1672,7 @@ life = {
 #         print("This CoyoteWeapon has been brought to you by Acme")
 # CoyoteWeapon.commercial()
 
-# ###################################195 
+# ###################################195 196 197 198 199 200 
 # class Quote():
 #     def __init__(self, person, words):
 #         self.person = person
@@ -1731,16 +1731,89 @@ life = {
 # print(first == third)
 # first = Word("ha")
 # print(first)
-#######################################
-class Word():
-    def __init__(self, text):
-        self.text = text
-    def __eq__(self, word2):
-        return self.text.lower() == word2.text.lower()
-    def __str__(self):
-        return self.text
-    def __repr__(self):
-        return "Word("     + self.text   + ")"
-first = Word("ha")
-print(repr(first))  # 使用 __repr__
-print(str(first))   # 使用 __str__
+# #######################################
+# class Word():
+#     def __init__(self, text):
+#         self.text = text
+#     def __eq__(self, word2):
+#         return self.text.lower() == word2.text.lower()
+#     def __str__(self):
+#         return self.text
+#     def __repr__(self):
+#         return "Word("     + self.text   + ")"
+# first = Word("ha")
+# print(repr(first))  # 使用 __repr__
+# print(str(first))   # 使用 __str__
+#############################################201 202 203 
+# class Bill():
+#     def __init__(self, description):
+#         self.description = description
+
+# class Tail():
+#     def __init__(self, length):
+#         self.length = length
+
+# class Duck():
+#     def __init__(self, bill, tail):
+#         self.bill = bill
+#         self.tail = tail
+#     def about(self):
+#         print("This duck has a", self.bill.description,
+#               "bill and a", self.tail.length, "tail")
+# a_tail = Tail("long")
+# a_bill = Bill("wide orange")
+# duck = Duck(a_bill, a_tail)
+# duck.about() ######  類別可以繼承 ##### #### 模組不行#######
+
+# from collections import namedtuple
+# Duck = namedtuple("Duck", "bill tail")
+# duck = Duck("wide orange", "long")
+# print(duck)
+# print(duck.bill)
+# print(duck.tail)
+####################################以下第二種寫法
+# parts = {"bill": "wide orange", "tail": "long"}
+# duck2 = Duck(**parts)
+# print(duck2)
+# ################################### 以下第三種寫法
+# duck2 = Duck(bill = "wide orange", tail = "long")
+# print(duck2)
+# ###################################以下第四種寫法
+# duck3 = duck2._replace(tail ="magnificent")
+# print(duck3)
+# ###################################以下第五種寫法
+# duck_dict = {"bill": "wide orange", "tail": "long"}
+# print(duck_dict)
+# ##########加入字典
+# duck_dict["color"] = "green"
+# print(duck_dict)
+# ##########不能加入不具名tuple
+# duck.color = "green"
+#########################################204
+# class TeenyClass():
+#     def __init__(self, name):
+#         self.name = name
+# teeny = TeenyClass("itsy")
+# print(teeny.name)
+# #########################以下第二種寫法
+# from dataclasses import dataclass
+# @dataclass
+# class TeenyDataClass:
+#     name: str
+#     name: type
+# teeny = TeenyDataClass("bitsy")
+# print(teeny.name)
+
+from dataclasses import dataclass
+@dataclass
+class AnimalClass:
+    name: str
+    habitat: str
+    teeth: int = 0
+snowman = AnimalClass("yeti", "Himalayas", 46)
+duck = AnimalClass(habitat = "lake", name = "duck")
+print(snowman)
+print(duck)
+print(duck.habitat)
+print(snowman.teeth)
+
