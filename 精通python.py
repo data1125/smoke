@@ -1804,16 +1804,50 @@ life = {
 # teeny = TeenyDataClass("bitsy")
 # print(teeny.name)
 
-from dataclasses import dataclass
-@dataclass
-class AnimalClass:
-    name: str
-    habitat: str
-    teeth: int = 0
-snowman = AnimalClass("yeti", "Himalayas", 46)
-duck = AnimalClass(habitat = "lake", name = "duck")
-print(snowman)
-print(duck)
-print(duck.habitat)
-print(snowman.teeth)
+# from dataclasses import dataclass
+# @dataclass
+# class AnimalClass:
+#     name: str
+#     habitat: str
+#     teeth: int = 0
+# snowman = AnimalClass("yeti", "Himalayas", 46)
+# duck = AnimalClass(habitat = "lake", name = "duck")
+# print(snowman)
+# print(duck)
+# print(duck.habitat)
+# print(snowman.teeth)
+
+######################################10.1
+# class Thing():
+#     pass
+# print(Thing)
+# example = Thing()
+# print(example)
+######################################10.2
+# class Thing2():
+#     letters = "abc"
+# print(Thing2.letters) ###Thing2.letters要結合才能打印
+# ######################################10.3
+# class Thing3():
+#     def __init__(self):
+#         self.letters = "xyz"
+# print(Thing3.letters)  ###錯誤示範
+# something = Thing3()
+# print(something.letters)
+########################################10.4
+# class Element():
+#     def __init__(self, name, symbol, number):
+#         self.name = name
+#         self.symbol = symbol
+#         self.number = number
+# hydrogen = Element("Hydrogen", "H",  1)#10.4
+# ########################################10.5 延續10.4
+# el_dict = {"name": "Hydrogen", "symbol": "H", "number": 1}
+# hydrogen = Element(el_dict["name"], el_dict["symbol"], el_dict["number"])
+# print(hydrogen.name)
+# hydrogen = Element(**el_dict)
+# print(hydrogen.name)
+##########################################10.6
+
+
 
