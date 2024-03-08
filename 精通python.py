@@ -1841,13 +1841,92 @@ life = {
 #         self.symbol = symbol
 #         self.number = number
 # hydrogen = Element("Hydrogen", "H",  1)#10.4
-# ########################################10.5 延續10.4
-# el_dict = {"name": "Hydrogen", "symbol": "H", "number": 1}
+# ########################################10.5   延續10.4
+el_dict = {"name": "Hydrogen", "symbol": "H", "number": 1}
 # hydrogen = Element(el_dict["name"], el_dict["symbol"], el_dict["number"])
 # print(hydrogen.name)
 # hydrogen = Element(**el_dict)
 # print(hydrogen.name)
-##########################################10.6
-
-
-
+##########################################10.6  延續10.5
+# class Element():   第一種打印
+#     def __init__(self, name, symbol, number):
+#         self.name = name
+#         self.symbol = symbol
+#         self.number = number
+#     def dump(self):
+#         print("name = %s, symbol = %s, number = %s" %
+#              (self.name, self.symbol, self.number))
+# hydrogen = Element(**el_dict) 
+# hydrogen.dump()
+#######################################10.7  延續10.6 
+# class Element():   #########第二種打印
+#     def __init__(self, name, symbol, number):
+#         self.name = name
+#         self.symbol = symbol
+#         self.number = number
+#     def __str__(self):
+#         return("name = %s, symbol = %s, number = %s" %   ###改成return
+#              (self.name, self.symbol, self.number))
+# hydrogen = Element(**el_dict) 
+# print(hydrogen)
+#####################################10.8
+# class Element():   #########第三種打印  單獨印出
+#     def __init__(self, name, symbol, number):
+#         self.__name = name
+#         self.__symbol = symbol
+#         self.__number = number
+#     @property
+#     def name(self):
+#         return self.__name
+#     @property
+#     def symbol(self):
+#         return self.__symbol
+#     @property
+#     def number(self):
+#         return self.__number
+# hydrogen = Element("Hydrogen", "H", 1)
+# print(hydrogen.name)
+# print(hydrogen.symbol)
+# print(hydrogen.number)
+#####################################10.9
+# class Beer():
+#     def eats(self):
+#         return "berries"
+# class Rabbit():
+#     def eats(self):
+#         return "clover"
+# class Octothorpe():
+#     def eats(self):
+#         return "campers"
+# b = Beer()
+# R = Rabbit()
+# O = Octothorpe()
+# print(b.eats())
+# print(R.eats())
+# print(O.eats())
+#####################################10.10
+class Laser():
+    def does(self):
+        return "disintergrata"
+class Claw():
+    def does(self):
+        return "crush"
+class SmartPhone(): 
+    def does(self):
+        return "ring"
+class Robot():
+    def __init__(self):
+        self.laser = Laser()
+        self.claw = Claw()
+        self.smartphone = SmartPhone()
+    def does(self):
+        return """I have many attachments:
+My laser, to %s.
+My claw, to %s.
+My smartphone, to %s. """ %(
+    self.laser.does(),
+    self.claw.does(),
+    self.smartphone.does()
+)
+robbie = Robot()
+print(robbie.does())
