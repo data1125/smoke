@@ -1789,7 +1789,7 @@ life = {
 # print(duck_dict)
 # ##########不能加入不具名tuple
 # duck.color = "green"
-#########################################204
+#########################################204 205 206
 # class TeenyClass():
 #     def __init__(self, name):
 #         self.name = name
@@ -1841,8 +1841,8 @@ life = {
 #         self.symbol = symbol
 #         self.number = number
 # hydrogen = Element("Hydrogen", "H",  1)#10.4
-# ########################################10.5   延續10.4
-el_dict = {"name": "Hydrogen", "symbol": "H", "number": 1}
+# # ########################################10.5   延續10.4
+# el_dict = {"name": "Hydrogen", "symbol": "H", "number": 1}
 # hydrogen = Element(el_dict["name"], el_dict["symbol"], el_dict["number"])
 # print(hydrogen.name)
 # hydrogen = Element(**el_dict)
@@ -1905,28 +1905,31 @@ el_dict = {"name": "Hydrogen", "symbol": "H", "number": 1}
 # print(R.eats())
 # print(O.eats())
 #####################################10.10
-class Laser():
-    def does(self):
-        return "disintergrata"
-class Claw():
-    def does(self):
-        return "crush"
-class SmartPhone(): 
-    def does(self):
-        return "ring"
-class Robot():
-    def __init__(self):
-        self.laser = Laser()
-        self.claw = Claw()
-        self.smartphone = SmartPhone()
-    def does(self):
-        return """I have many attachments:
-My laser, to %s.
-My claw, to %s.
-My smartphone, to %s. """ %(
-    self.laser.does(),
-    self.claw.does(),
-    self.smartphone.does()
-)
-robbie = Robot()
-print(robbie.does())
+# class Laser():
+#     def does(self):
+#         return "disintergrata"
+# class Claw():
+#     def does(self):
+#         return "crush"
+# class SmartPhone(): 
+#     def does(self):
+#         return "ring"
+# class Robot():
+#     def __init__(self):
+#         self.laser = Laser()
+#         self.claw = Claw()
+#         self.smartphone = SmartPhone()
+#     def does(self):
+#         return """I have many attachments:
+# My laser, to %s.
+# My claw, to %s.
+# My smartphone, to %s. """ %(
+#     self.laser.does(),
+#     self.claw.does(),
+#     self.smartphone.does()
+# )
+# robbie = Robot()
+# print(robbie.does())
+#########################################207
+
+
