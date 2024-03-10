@@ -1931,5 +1931,47 @@ life = {
 # robbie = Robot()
 # print(robbie.does())
 #########################################207
+#模組建立練習
+########################################216
+# periodic_table = {"Hydrogen" : 1, "Helium": 2}
+# # print(periodic_table)
 
+# carbon = periodic_table.setdefault("Carbon", 12) #setdefault和get很像
+# print(carbon)         
+# print(periodic_table) #可以同時打印periodic和carbon
+
+# helium = periodic_table.setdefault("Helium", 947)
+# print(helium)         #會印出2
+# print(periodic_table) #不會印出Helium
+
+# from collections import defaultdict
+# periodic_table = defaultdict(int)  #預設字典
+# periodic_table["Hydrogen"] = 1
+# print(periodic_table["Lead"]) #不會打印出 Lead
+# # print(f"Lead: {periodic_table['Lead']}") #這樣才能打印出Lead
+# print(periodic_table)  #印出Hydrogen = 1 Lead = 0
+
+# from collections import defaultdict
+
+# def no_idea():   #defaultdict 回傳指派缺漏的值
+#     return "Huh?" #當沒有bestiary["C"] 就印出Huh?
+
+# bestiary = defaultdict(no_idea)
+# bestiary["A"] = "Abominable Snowman"
+# bestiary["B"] = "Basilisk"
+# print(bestiary["A"])
+# print(bestiary["B"])
+# print(bestiary["C"])  #印出Huh
+
+# bestiary = defaultdict(lambda: "Huh1?") #可以在呼叫裡用lambda定義自己預設值
+# print(bestiary["E"])
+# ###in可以用來製作自己的計數器
+# from collections import defaultdict
+
+# food_counter = defaultdict(int)
+# for food in ["spam", "spam", "eggs", "spam"]:
+#     food_counter[food] += 1
+
+# for food, count in food_counter.items(): #items()用在於字典
+#     print(food, count)
 
