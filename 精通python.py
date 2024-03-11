@@ -1932,7 +1932,7 @@ life = {
 # print(robbie.does())
 #########################################207
 #模組建立練習
-########################################216
+########################################216 217 218 219
 # periodic_table = {"Hydrogen" : 1, "Helium": 2}
 # # print(periodic_table)
 
@@ -1965,7 +1965,7 @@ life = {
 
 # bestiary = defaultdict(lambda: "Huh1?") #可以在呼叫裡用lambda定義自己預設值
 # print(bestiary["E"])
-# ###in可以用來製作自己的計數器
+# ###in可以用來製作自己的計數器  第一種編寫
 # from collections import defaultdict
 
 # food_counter = defaultdict(int)
@@ -1974,4 +1974,87 @@ life = {
 
 # for food, count in food_counter.items(): #items()用在於字典
 #     print(food, count)
-
+# # 第二種編寫
+# dict_counter = {}
+# for food in ["spam", "spam", "eggs", "spam"]:
+#     if not food in dict_counter:
+#         dict_counter[food] = 0
+#     dict_counter[food] += 1
+# for food, count in dict_counter.items():
+#     print(food, count)
+# 第三種編寫
+# from collections import Counter
+# breakfast = ["spam", "spam", "eggs", "spam"]
+# breakfast_counter = Counter(breakfast)
+# print(breakfast_counter)
+# # 第四種編寫
+# print(breakfast_counter.most_common())
+# print(breakfast_counter.most_common(1))
+# print(breakfast_counter)
+# #####製作一個新的串列  lunch
+# lunch = ["eggs", "eggs", "bacon"]
+# lunch_counter = Counter(lunch)
+# print(lunch_counter)
+# ###   結合兩個計數器的第一種做法
+# print(breakfast_counter + lunch_counter)
+# ###  可以用 - 減去計數器
+# print(breakfast_counter - lunch_counter)
+# print(lunch_counter - breakfast_counter )
+# ### 用交集運算子&來取得公同的項目
+# print(breakfast_counter & lunch_counter)
+# ### 聯集運算子 | 來取得所有項目
+# print(breakfast_counter | lunch_counter)
+#################################################219 220 221
+# quotes = {
+#     "Moe": "A wise guy, huh?",
+#     "Larry": "ow!",
+#     "Curly": "Nyuk nyuk!",
+# }
+# for stooge in quotes:
+#     print(stooge)
+# ####建立有序字典 orderedDict
+# from collections import OrderedDict
+# quotes = OrderedDict([
+#     ("Moe", "A wise guy, huh?"),
+#     ("Larry", "Ow!"),
+#     ("Curly", "Nyuk nyuk!"),
+# ])
+# for stooge in quotes:
+#     print(stooge)
+# ###堆疊 + 佇=(住)列 == deque
+# def palindrome(word):
+#     from collections import deque
+#     dq = deque(word)
+#     while len(dq) > 1:
+#         if dq.popleft() != dq.pop():  ##第一個字母和最後一個字母比較 
+#             return False              ##相同就刪除 並回到while
+#     return True
+# print(palindrome("a"))
+# print(palindrome("racecar"))
+# print(palindrome(""))
+# print(palindrome("radar"))
+# print(palindrome("halibut"))
+# ####字串反過來, 快速第寫出回文檢查程式
+# def another_palindrome(word):
+#     return word == word[::-1]
+# print(another_palindrome("radar"))
+# print(another_palindrome("halibut"))
+############################################221
+# import itertools
+# for item in itertools.chain([1, 2], ["a", "b"]):
+#     print(item)
+#####cycle() 是一種無限迭代器,可循環遍歷它的引數
+# import itertools
+# for item in itertools.cycle([1, 2]):
+#     print(item) ##無限印出
+###accumulate()可計算累計值,在預設情況下,它會計算總和
+# import itertools
+# for item in itertools.accumulate([1, 2, 3, 4]): # 1 + 2 + 3 +4
+#     print(item)
+###accumulate()第二個引數提供一個函式來取代加法,函式接收兩個引數,回傳一個結果
+###itertools模組有許多函式,組合與排列置換(permutation)可以幫你節省時間
+# import itertools
+# def multiply(a, b):
+#     return a * b
+# for item in itertools.accumulate([2, 2, 32], multiply): 2 * 2 * 32
+#     print(item)
