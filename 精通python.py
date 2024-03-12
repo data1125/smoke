@@ -2058,3 +2058,28 @@ life = {
 #     return a * b
 # for item in itertools.accumulate([2, 2, 32], multiply): 2 * 2 * 32
 #     print(item)
+
+# from collections import OrderedDict
+# from pprint import pprint
+# quotes = OrderedDict ([
+#     ("Moe", "A wise guy, huh?"),
+#     ("Larry", "Ow!"),
+#     ("Curly", "Nyuk nyuk!"),
+# ])
+# print(quotes)   ####跟書上有差別 再觀察
+# for name, quote in quotes.items():
+#     pprint(f"({name}, {quote}),")
+# #########################取得隨機值
+# from random import choice
+# print(choice ([23, 9, 46, "bacon", 0x123abc]))
+# print(choice (("a", "one", "and-a", "two")))
+# print(choice (range(100)))
+# print(choice ("alphabet"))
+#########################取得隨機值 使用sample()函式可以一次取得多個值
+# from random import sample
+# print(sample([23, 9, 46, "bacon", 0x123abc], 2))  #最後一個數字是你取想多個數值
+# print(sample(("a", "one", "and-a", "two"), 2))  #最後一個數字是你取想多個數值
+# print(sample(range(100),4))  #最後一個數字是你取想多個數值
+# print(sample(("alphabet"),7))  #最後一個數字是你取想多個數值
+##############要在取得任何範圍之內隨機整數,可以使用randint()
+
