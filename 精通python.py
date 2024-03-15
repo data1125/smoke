@@ -2082,4 +2082,132 @@ life = {
 # print(sample(range(100),4))  #最後一個數字是你取想多個數值
 # print(sample(("alphabet"),7))  #最後一個數字是你取想多個數值
 ##############要在取得任何範圍之內隨機整數,可以使用randint()
-
+# from random import randint
+# print(randint(38, 74))  #38-74 隨機印出一個整數
+##########randrange()很像range(),它也有開始(包含)與結束(不包含)整數,以及一個選用的整數步幅
+# from random import randrange 
+# print(randrange(38, 74))
+# print(randrange(38, 74, 10))  #只會隨機印出38 48 58 68 
+# print(randrange(38, 74, 20))  #只會隨機印出38 58 
+##########若要取得介於0.0和1.0之間的隨機實數(浮點數)
+# from random import random
+# print(random())  ###隨機印出浮點數
+# print(random())  ###隨機印出浮點數
+# print(random())  ###隨機印出浮點數
+############################################11.1
+# import zoo
+# zoo.hours()
+############################################11.2
+# import zoo as menagerie
+# menagerie.hours()
+###########################################11.3
+# from zoo import hours
+# hours()
+##########################################11.4
+# from zoo import hours as info
+# info()
+##########################################11.5
+# plain = {"a": 1, "b": 2, "c": 3}
+# print(plain)
+##########################################11.6
+# from collections import OrderedDict  ##OederedDict 一定要搭配collections
+# fancy = OrderedDict ([("a", 1), ("b", 2), ("c", 3)])
+# print(fancy)
+##########################################11.7
+# from collections import defaultdict #defaultdict=預設字典
+# dict_of_lists = defaultdict(list)
+# dict_of_lists["c"].append("something for a")
+# print(dict_of_lists["c"])
+# ##############################################231 232 233 234 235 236 237
+# def unicode_test(value):
+#     import unicodedata
+#     name = unicodedata.name(value)
+#     value2 =unicodedata.lookup(name)
+#     print('value="%s", name="%s", value2="%s"' % (value, name, value2))
+# ###########################"LATIN SMALL LETTER E WITH ACUTE"
+#     print(unicodedata.name("\u00e9"))
+#     print(unicodedata.lookup("LATIN SMALL LETTER E WITH ACUTE"))
+# ############################從一般的ASCII字母開始:   
+# # print(unicode_test("A"))
+# # LETTER E WITH ACUTE"
+# # print(place)###########################ASCII 標點符號:
+# print(unicode_test("$"))
+# # # ############################Unicode 貨幣字元:
+# # print(unicode_test("\u00a2"))
+# # # ############################另一個Unicode 貨幣字元:
+# # print(unicode_test("\u20ac"))
+# # # ############################特殊符號
+# # print(unicode_test("\u2603"))
+# # ############################cafe
+# place = "cafe"
+# print(place)
+# ###########################現在我們可以用代碼或名稱來指定字串 cafe
+# place = "caf\u00e9"
+# print(place)
+# place = "caf\N{LATIN SMALL LETTER E WITH ACUTE}"
+# ###########################我們直接在字串插入e 但我們也可以用附加的方式建立字串
+# u_umlaut = "\N{LATIN SMALL LETTER U WITH DIAERESIS}"
+# print(u_umlaut)
+# drink = "Gew" + u_umlaut + "rztraminer" 
+# print("Now I can finally have my", drink, "in a", place)
+# ###########################len()函式會計算Unicode字元的數目, 不是byte
+# print(len("$"))
+# print(len("\U0001f47b"))
+# ##########################如果知道Unicode數字ID,可以使用標準的ord()與chr()函式在整數ID與單字元Unicode字串之間快速轉換
+# print(chr(233))
+# print(chr(0xe9))
+# print(chr(0x1fc6))
+##############編碼
+#編碼名稱        說明
+#"ascii"        古老的七位元ASCII
+#"utf-8"        八位元可變長度編碼,這是你幾乎一定會使用的格式
+#"latin-1"      也稱為ISO 8859-1
+#cp-1252"       一般的Windons編碼
+#unicode-escape" Python Unicode常值格式, \u' XXXX或 \U'XXXXXXX
+############################可以將任何東西編碼成UTF-8 我們將Unicode字串"\2603"指派給名稱snowman
+# snowman = "\u2603"
+# print(snowman)
+# print(len(snowman))
+# ds = snowman.encode("utf-8")
+# print(len(ds))
+# print(ds)
+# # ds = snowman.encode("ascii")
+# print(snowman.encode("ascii", "replace"))
+# print(snowman.encode("ascii", "backslashreplace"))
+# print(snowman.encode("ascii", "xmlcharrefreplace"))
+###########################################解碼
+# place = "caf\u00e9"
+# print(place)
+# print(type(place))
+# place_bytes = place.encode("utf-8")
+# print(place_bytes)
+# print(type(place_bytes))
+# place2 = place_bytes.decode("utf-8")
+# print(place2)
+# # place3 = place_bytes.decode("ascii")
+# # print(place3)
+# place4 = place_bytes.decode("latin-1")
+# print(place4)
+# place5 = place_bytes.decode("windows-1252")
+# print(place5)
+#########################################238
+# import html
+# print(html.unescape("&egrave"))
+# ############################十進制
+# print(html.unescape("&#233;"))
+# ############################十六進制
+# print(html.unescape("&#xe9;"))
+# ############################實體轉換字典
+# from html.entities import html5
+# print(html5["egrave"])
+# print(html5["egrave;"])
+#############################要進行反向的轉換,要先用ord()
+# import html
+# char = "\u00e9"
+# dec_value = ord(char)
+# print(html.entities.codepoint2name[dec_value])
+############################要處裡有多個字元的Unicode字串時,請用兩個步驟來轉換
+place = "caf\u00e9"
+byte_value = place.encode("ascii", "xmlcharrefreplace")
+print(byte_value)
+print(byte_value.decode())
