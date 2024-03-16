@@ -2190,7 +2190,7 @@ life = {
 # print(place4)
 # place5 = place_bytes.decode("windows-1252")
 # print(place5)
-#########################################238
+# #########################################238 239 2400
 # import html
 # print(html.unescape("&egrave"))
 # ############################十進制
@@ -2207,7 +2207,69 @@ life = {
 # dec_value = ord(char)
 # print(html.entities.codepoint2name[dec_value])
 ############################要處裡有多個字元的Unicode字串時,請用兩個步驟來轉換
-place = "caf\u00e9"
-byte_value = place.encode("ascii", "xmlcharrefreplace")
-print(byte_value)
-print(byte_value.decode())
+# place = "caf\u00e9"
+# byte_value = place.encode("ascii", "xmlcharrefreplace")
+# print(byte_value)
+# print(byte_value.decode())
+###########################標準化
+# eacute1 = "é"                                        # UTF-8 貼上
+# eacute2 = "\u00e9"                                   #Unicode 碼位
+# eacute3 = \
+#         "\N{LATIN SMALL LETTER E WITH ACUTE}"        #Unicode 名稱
+# eacute4 = chr(233)                                   # 十進制 byte值
+# eacute5 = chr(0xe9)                                  # 十六進制 byte值
+# print(eacute1, eacute2, eacute3, eacute4, eacute5)
+# print(eacute1 == eacute2 == eacute3 == eacute4 == eacute5)
+# # ###########################################試著做一些健全性測試
+# # import unicodedata 
+# # print(unicodedata.name(eacute1))
+# # print(ord(eacute1))                                  # 十進制整數
+# # print(0xe9)                                          #Unicode 十六進制整數
+# ############################################接著藉著結合一般的e和重音符號
+# eacute_combined1 = "e\u0301"
+# eacute_combined2 = "e\N{COMBINING ACUTE ACCENT}"
+# eacute_combined3 = "e" + "\u0301"
+# print(eacute_combined1, eacute_combined2, eacute_combined3)
+# print(eacute_combined1 == eacute_combined2 == eacute_combined3)
+# print(len(eacute_combined3))
+# print(eacute1 == eacute_combined1 )
+# #################可以用unicodedata 模組的 normalize("NFC", eacute_combined1)
+# import unicodedata
+# eacute_normalized = unicodedata.normalize("NFC", eacute_combined1)
+# print(len(eacute_normalized))
+# print(eacute_normalized == eacute1)
+# print(unicodedata.name(eacute_normalized))
+######################################################241
+# import re
+# result = re.match("You", "Young Frankenstein")
+# print(result)
+# ########################進行較複雜的比對時,可以先編譯模式來提升之後的比對速度
+# import re
+# youpattern = re.compile("You")
+# print(youpattern)
+# ########################接著用編譯過的模式來執行比對
+# import re
+# result = youpattern.match("Young Frankenstein")
+# print(result)
+################match()之外還有其他比對模式與來源的方式
+################search() 會回傳第一個符合的,如果有的話
+################findall()會回傳一個串列,裡面有所有不重疊的,符合的實例,如果有的話
+################split()會在符合模式的地方拆開來源,並回傳一個存有每一段字串的串列
+################sub()會接收一個替換引數,將來源中符合模式的部分都換成替換物
+###############################match()來確定開頭是否符合
+# import re
+# source = "Young Frankenstein"
+# m = re.match("You", source)   #match 在source的開頭開始處理
+# if m:               #match 回傳一個物件: 看看符合的是什麼
+#     print(m.group())
+# ###########################加 ^ 也能回傳 You
+# m = re.match("^You", source)   #match 在source的開頭開始處理
+# if m:               #match 回傳一個物件: 看看符合的是什麼
+#     print(m.group())
+###########################Frank是否會回傳
+import re
+source = "Young Frankenstein"
+m = re.match("Frank", source) ###########不會回傳也不回應
+if m:
+    print(m.group())  
+##########################
