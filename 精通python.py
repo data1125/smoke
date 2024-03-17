@@ -2239,7 +2239,7 @@ life = {
 # print(len(eacute_normalized))
 # print(eacute_normalized == eacute1)
 # print(unicodedata.name(eacute_normalized))
-######################################################241
+######################################################241 242 243 244
 # import re
 # result = re.match("You", "Young Frankenstein")
 # print(result)
@@ -2267,9 +2267,91 @@ life = {
 # if m:               #match 回傳一個物件: 看看符合的是什麼
 #     print(m.group())
 ###########################Frank是否會回傳
+# import re
+# source = "Young Frankenstein"
+# m = re.match("Frank", source) ###########不會回傳也不回應
+# if m:
+#     print(m.group())  
+#########################縮短這個範例
+# import re
+# source = "Young Frankenstein"
+# if m := re.search("Frank", source):
+#     print(m.group()) #########印出Frank
+########################用search()來看看Frank有沒有在來源字串的任何地方
+# import re
+# source = "Young Frankenstein"
+# m = re.search("Frank", source)
+# if m:
+#     print(m.group()) ###########印出Frank
+########################改變模式,並且再次使用match()來比對開頭
+# import re
+# source = "Young Frankenstein"
+# m = re.match(".*Frank", source)#" . * Frank" .代表任何單一字元  *代表零或多個它前面的東西,
+# if m:                   ###match 回傳物件                . *一起用使用代表任何數量的字元(包括零)
+#     print(m.group())  #########match()回傳符合,.*Frank的字串:Young Frank
+# #########################用search()找到第一個符合的對象
+# import re
+# source = "Young Frankenstein"
+# m = re.search("Frank", source)
+# if m:              #####search 回傳一個物件
+#     print(m.group())
+# #########################用findall()尋找所有符合的對象
+# import re
+# source = "Young Frankenstein"  #這字串有四個 n
+# m = re.findall("n", source)
+# print(m) ####findall 回傳一個串列
+# print("Found", len(m), "matches")  ##Found 4 matches = 找到四個n
+# #########################在 "n" 之後有任何字元的模式
+# import re
+# source = "Young Frankenstein"
+# m = re.findall("n.", source)  ##"n." 找出n加後面的字母 如果後面沒字母就不打印
+# print(m)
+# #########################必須用?來表示在"n"後面的字元是可有可無
+# import re
+# source = "Young Frankenstein"
+# m = re.findall("n.?", source) ### "n.?"顯示後面的字母和後面沒字母
+# print(m)
+# #########################用split()在符合的地方拆開
+# import re
+# source = "Young Frankenstein"
+# m = re.split("n", source)  ######字串有n,會分割變成一個串列
+# print(m)  ####split 會回傳一個串列
+# #########################用sub()來替換符合的對象
+# import re
+# source = "Young Frankenstein"
+# m = re.sub("n", "?", source)  ##把n變成?
+# print(m)  #sub 會回傳一個字串
+##################################################245
+#######\d 一個數字, \D 一個非數字, \w 一個英數字元, \W 一個非英數字元, \s 一個空白字元
+#######\S 一個非空白字元, \b 一個單字範圍(介於\w與\W,無論順序為何), \B 一個非單字範圍
+#python string 模組定義了許多可用來進行測試的字串常數,我們將使用printable,它有100個可列
+#印ASCII字元,包括大小寫的字母.數字.空白字元與標點符號
+import string 
 import re
-source = "Young Frankenstein"
-m = re.match("Frank", source) ###########不會回傳也不回應
-if m:
-    print(m.group())  
-##########################
+printable = string.printable
+# print(len(printable)) 
+# print(printable[0:50])  ##印出數字與英文字母
+# print(printable[50:])  ##印出英文與%^*&()
+#####################printable裡面的字元有哪些是數字?
+# print(re.findall("\d", printable)) #123456789
+# print(re.findall("\w", printable))  #數字與英文字母
+print(re.findall("\s", printable)) #在 Python 中，這些空白字元包括空格 (' ')、水平制表符 ('\t')、
+#換行符 ('\n')、回車符 ('\r')、垂直制表符 ('\x0b') 和換頁符 ('\x0c')。
+x = "abc" + "-/*" + "\u00ea" + "\u0115"
+print(re.findall("\w", x)) #一如預期,這個模式只找到三個字母
+############################看這些範例可能會讓你眼花撩亂,我們先定義source字串
+source = """I wish I may, I wish I might
+.... Have a dish of fish tonight."""
+print(re.findall("wish", source))  ##找出wish,並印出來
+#########################接著找出任何地方的wish或fish
+print(re.findall("wish|fish", source)) ##找出wish和fish,並印出來
+#########################在開頭尋找wish
+print(re.findall("^wish", source))  ##印出[]
+#########################在開頭尋找 I wish
+print(re.findall("^I wish", source)) ##印出 I wish
+#########################在結尾尋找fish
+print(re.findall("fish$", source)) ##[]
+#########################最後,在結尾尋找fish tonight.
+print(re.findall("fish tonight.$", source)) ###fish tonight
+
+
