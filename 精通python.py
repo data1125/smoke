@@ -2321,37 +2321,84 @@ life = {
 # source = "Young Frankenstein"
 # m = re.sub("n", "?", source)  ##把n變成?
 # print(m)  #sub 會回傳一個字串
-##################################################245
+##################################################245 246 247 248 249 
 #######\d 一個數字, \D 一個非數字, \w 一個英數字元, \W 一個非英數字元, \s 一個空白字元
 #######\S 一個非空白字元, \b 一個單字範圍(介於\w與\W,無論順序為何), \B 一個非單字範圍
 #python string 模組定義了許多可用來進行測試的字串常數,我們將使用printable,它有100個可列
 #印ASCII字元,包括大小寫的字母.數字.空白字元與標點符號
-import string 
-import re
-printable = string.printable
+# import string 
+# import re
+# printable = string.printable
 # print(len(printable)) 
 # print(printable[0:50])  ##印出數字與英文字母
 # print(printable[50:])  ##印出英文與%^*&()
 #####################printable裡面的字元有哪些是數字?
 # print(re.findall("\d", printable)) #123456789
 # print(re.findall("\w", printable))  #數字與英文字母
-print(re.findall("\s", printable)) #在 Python 中，這些空白字元包括空格 (' ')、水平制表符 ('\t')、
-#換行符 ('\n')、回車符 ('\r')、垂直制表符 ('\x0b') 和換頁符 ('\x0c')。
-x = "abc" + "-/*" + "\u00ea" + "\u0115"
-print(re.findall("\w", x)) #一如預期,這個模式只找到三個字母
-############################看這些範例可能會讓你眼花撩亂,我們先定義source字串
-source = """I wish I may, I wish I might
-.... Have a dish of fish tonight."""
-print(re.findall("wish", source))  ##找出wish,並印出來
-#########################接著找出任何地方的wish或fish
-print(re.findall("wish|fish", source)) ##找出wish和fish,並印出來
-#########################在開頭尋找wish
-print(re.findall("^wish", source))  ##印出[]
-#########################在開頭尋找 I wish
-print(re.findall("^I wish", source)) ##印出 I wish
-#########################在結尾尋找fish
-print(re.findall("fish$", source)) ##[]
-#########################最後,在結尾尋找fish tonight.
-print(re.findall("fish tonight.$", source)) ###fish tonight
-
-
+# print(re.findall("\s", printable)) #在 Python 中，這些空白字元包括空格 (' ')、水平制表符 ('\t')、
+# #換行符 ('\n')、回車符 ('\r')、垂直制表符 ('\x0b') 和換頁符 ('\x0c')。
+# x = "abc" + "-/*" + "\u00ea" + "\u0115"
+# print(re.findall("\w", x)) #一如預期,這個模式只找到三個字母
+# ############################看這些範例可能會讓你眼花撩亂,我們先定義source字串
+# source = """I wish I may, I wish I might
+# .... Have a dish of fish tonight."""
+# print(re.findall("wish", source))  ##找出wish,並印出來
+# #########################接著找出任何地方的wish或fish
+# print(re.findall("wish|fish", source)) ##找出wish和fish,並印出來
+# #########################在開頭尋找wish
+# print(re.findall("^wish", source))  ##印出[]
+# #########################在開頭尋找 I wish
+# print(re.findall("^I wish", source)) ##印出 I wish
+# #########################在結尾尋找fish
+# print(re.findall("fish$", source)) ##[]
+# #########################最後,在結尾尋找fish tonight.
+# print(re.findall("fish tonight.$", source)) ###fish tonight
+# #######^與$字元稱為錨點,^會定錨搜尋字串的開頭,$會定錨搜尋結尾, .$會比對行尾的任何字元,包括句點
+# #######所以它找到東西,為了更精華,我們應該轉義句點.用字面值來比對
+# print(re.findall("fish tonight\.$", source))
+# #######搜尋W或F接著是ish的模式
+# print(re.findall("[wf]ish", source))
+# #######尋找一或多個w,s或h
+# print(re.findall("[wsh]+", source))
+# #######尋找開頭是ght接下來是非英數字元的模式
+# print(re.findall("ght\W", source))
+# #######尋找wish之前的I
+# print(re.findall("I (?=wish)", source))
+# #######最後, I之後的wish
+# print(re.findall("(?<=I) wish", source))
+# #######尋找fish
+# print(re.findall("\bfish", source))
+# #######用r字元來停用python的轉義字元
+# print(re.findall(r"\bfish", source))
+# #######模式:指定match()輸出
+# m = re.search(r"(. dish\b).*(\bfish)", source)
+# print(m.group())
+# print(m.groups())
+# #######(?P< name > expr) 它會比對expr,將匹配的實例放在name群組
+# m = re.search(r"(?P<DISH>. dish\b).*(?P<FISH>\bfish)", source)#寫法和上面不一樣,但印出一樣
+# print(m.group())
+# print(m.groups())
+# print(m.group("DISH"))
+# print(m.group("FISH"))
+#################################################250 
+#################################################二進制資料
+########用blist的串列建立一個bytes變數,稱為the_bytes.與一個bytearray變數稱為the_byte_array:
+blist = [1, 2, 3, 255]      #########十六進制  = X    255 = xff
+the_bytes = bytes(blist)
+print(the_bytes)
+the_bytes_array = bytearray(blist)
+print(the_bytes_array)
+########bytes值的表示法是以一個b與一個引號字元開頭的,接下來是十六進制序列
+print(b"\x61")
+print(b"\x01abc\xff")
+########這個範例為了告訴你,你無法改變bytes變數
+# blist = [1, 2, 3, 255]
+# the_bytes = bytes(blist)
+# the_bytes[1] = 127  ###無法改變
+# print(the_bytes)
+########但是bytesarray變數比較聽話,可以更改
+blist = [1, 2, 3, 255]
+the_byte_array = bytearray(blist)
+print(the_byte_array)
+the_byte_array[1] = 127  
+print(the_byte_array)
