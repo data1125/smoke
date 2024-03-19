@@ -2380,25 +2380,69 @@ life = {
 # print(m.groups())
 # print(m.group("DISH"))
 # print(m.group("FISH"))
-#################################################250 
+#################################################250 251 252 253 254 255
 #################################################二進制資料
 ########用blist的串列建立一個bytes變數,稱為the_bytes.與一個bytearray變數稱為the_byte_array:
-blist = [1, 2, 3, 255]      #########十六進制  = X    255 = xff
-the_bytes = bytes(blist)
-print(the_bytes)
-the_bytes_array = bytearray(blist)
-print(the_bytes_array)
-########bytes值的表示法是以一個b與一個引號字元開頭的,接下來是十六進制序列
-print(b"\x61")
-print(b"\x01abc\xff")
+# blist = [1, 2, 3, 255]      #########十六進制  = X    255 = xff
+# the_bytes = bytes(blist)
+# print(the_bytes)
+# the_bytes_array = bytearray(blist)
+# print(the_bytes_array)
+# ########bytes值的表示法是以一個b與一個引號字元開頭的,接下來是十六進制序列
+# print(b"\x61")
+# print(b"\x01abc\xff")
 ########這個範例為了告訴你,你無法改變bytes變數
 # blist = [1, 2, 3, 255]
 # the_bytes = bytes(blist)
 # the_bytes[1] = 127  ###無法改變
 # print(the_bytes)
 ########但是bytesarray變數比較聽話,可以更改
-blist = [1, 2, 3, 255]
-the_byte_array = bytearray(blist)
-print(the_byte_array)
-the_byte_array[1] = 127  
-print(the_byte_array)
+# blist = [1, 2, 3, 255]
+# the_byte_array = bytearray(blist)
+# print(the_byte_array)
+# the_byte_array[1] = 127  
+# print(the_byte_array)
+# the_bytes = bytes(range(0, 256))
+# the_bytes_array = bytearray(range(0, 256))
+# print(the_bytes)
+# print(the_bytes_array)
+###################################用struct來轉換二進制資料
+# import struct
+# valid_png_header = b"\x89PNG\r\n\x1a\n"
+# data = b"\x89PNG\r\n\x1a\n\x00\x00\x00\rIHDR" +\
+# b"\x00\x00\x00\x9a\x00\x00\x00\x8d\x08\x02\x00\x00\x00\xc9"
+# if data[:8] == valid_png_header:
+#     width, height = struct.unpack(">LL", data[16:24])
+#     print("Valid PNG, width", width, "height", height)
+# else:
+#     print("Not a valid PNG")
+# print(data[16:20])
+# print(data[20:24])
+# print(0x9a)
+# print(0x8d)
+# print(struct.pack(">L", 154))
+# print(struct.pack(">L", 141))
+# print(struct.unpack(">2L", data[16:24]))
+# print(struct.unpack(">16x2L6x", data))
+##############################下面是使用construct從data bytestringt擷取PNG長寬的方式
+# from construct import struct, magic, UBInt32, Const, String
+# # https://github.com/construct
+# fmt = struct("png",
+#       magic(b"\x89PNG\r\n\x1a\n"),
+#       UBInt32("length"),
+#       Const(String("type", 4), b"IHDR"),
+#       UBInt32("width"),
+#       UBInt32("height")
+# )
+# data = b"\x89PNG\r\n\x1a\n\x00\x00\x00\rIHDR" +\
+#     b"\x00\x00\x00\x9a\x00\x00\x00\x8d\x08\x02\x00\x00\x00\xc0"
+# result = fmt.parse(data)
+# print(result)
+###############################################256
+############用binascii()來轉換byte/字串
+# import binascii
+# valid_png_header = b"\x89PNG\r\n\x1a\n"
+# print(binascii.hexlify(valid_png_header))
+# ###############這個東西也可以轉回去
+# print(binascii.unhexlify(b"89504e470d0a1a0a"))
+###############位元運算子  256頁
