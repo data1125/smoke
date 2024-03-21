@@ -2446,3 +2446,57 @@ life = {
 # ###############這個東西也可以轉回去
 # print(binascii.unhexlify(b"89504e470d0a1a0a"))
 ###############位元運算子  256頁
+######################################12.1
+import unicodedata
+mystery = "\U0001f4a9"  #大便=\U0001f4a9
+print(mystery)
+print(unicodedata.name(mystery)) # 一大堆便便
+######################################12.2
+pop_bytes = mystery.encode("utf-8")
+print(pop_bytes)
+######################################12.3
+pop_string = pop_bytes.decode("utf-8") ##也能印出大便
+print(pop_string)
+######################################12.4
+mammoth = """
+We have seen thee, queen of cheese,
+Lying quietly at your ease,
+Gently fanned by evening breeze,
+Thy fair form no flies dare seize.
+
+All gaily dressed soon you'll go
+To the great Provincial show,
+To be admired by many a beau
+In the city of Toronto.
+
+Cows numerous as a swarm of bees,
+Or as the leaves upon the trees,
+It did reuire to make thee pleace,
+And stand unrivalled, queen of cheese.
+
+May you not receive a scar as 
+We have heard that Mr. Harris
+Intends to send you off as far as
+The great world's show at paris.
+
+Of the youth beware of these,
+For some of them might rudely squeeze
+And bite your cheek, then songs or glees
+We could not sing, oh! queen of cheese.
+
+We'rt thou suspended from balloon,
+You'd cast a shade even at noon,
+Folks would think it was the moon
+About to fall and crush them soon.
+"""
+####################################12.5
+import re
+pat = r"\bc\w*"                   #r"\b(e)搜尋
+print(re.findall(pat, mammoth))
+pat = r"\ba\w*"
+print(re.findall(pat, mammoth))
+####################################12.6
+pat = r"\bc\w{4}\b"    #### {3} 找出所有C開頭的四字母單字
+print(re.findall(pat, mammoth))
+pat = r"\bc\w{3}"      #### {3} 取得C開頭所有單字的前四個字母  .chee.se
+print(re.findall(pat, mammoth))
