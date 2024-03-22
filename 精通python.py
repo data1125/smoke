@@ -2496,7 +2496,41 @@ print(re.findall(pat, mammoth))
 pat = r"\ba\w*"
 print(re.findall(pat, mammoth))
 ####################################12.6
-pat = r"\bc\w{4}\b"    #### {3} 找出所有C開頭的四字母單字
+pat = r"\bc\w{3}\b"    #### {3} 找出所有C開頭的四字母單字
 print(re.findall(pat, mammoth))
 pat = r"\bc\w{3}"      #### {3} 取得C開頭所有單字的前四個字母  .chee.se
 print(re.findall(pat, mammoth))
+####################################12.7
+pat = r"\b\w*r\b"    ##取得結尾是r的單字的正確結果
+print(re.findall(pat, mammoth))
+pat = r"\b\w*1\b"   ##取得結尾是l的單字不太理想
+print(re.findall(pat, mammoth))
+pat = r"\b[\w']*l\b" ###正確取得11
+print(re.findall(pat, mammoth))
+pat = r'\b[\w\']*l\b'###正確取得11
+print(re.findall(pat, mammoth))
+pat = r"\b[\w\']*l\b"###正確取得11(外面用雙引號,裡面用單引號)
+print(re.findall(pat, mammoth))
+####################################12.8 取得三個母音
+pat = r'\b[^aeiou]*[aeiou]{3}[^aeiou]*\b' #取得單字有三個母音 (,在前面)
+print(re.findall(pat, mammoth))
+pat = r'\b\w*[aeiou]{3}[^aeiou\s]\w*\b'
+print(re.findall(pat, mammoth))   #######這次沒找到beau   (,在後面)
+pat = r'\b\w*[aeiou]{3}[^aeiou\s]*\w*\b'
+print(re.findall(pat, mammoth))   ###這次印出非常正確
+###12.9 unhexlify來將這個十六進制字串,因為頁寬的關係切成兩個字串,轉換成bytes變數gif
+import binascii
+hex_str = '47494638396101000100800000000000ffffff21f9' + \
+    '0401000000002c000000000100010000020144003b'
+gif = binascii.unhexlify(hex_str)
+###########################12.10
+print(len(gif))
+print(gif[:6] == b"GIF89a") #True
+print(gif[:6] == "GIF89a")  #False
+print(type(gif))
+print(type("GIF89a"))
+print(type(b"GIF89a"))
+########################12.11
+import struct
+width, height = struct.unpack("<HH", gif[6:10])
+print(width, height)
