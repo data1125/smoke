@@ -2447,90 +2447,162 @@ life = {
 # print(binascii.unhexlify(b"89504e470d0a1a0a"))
 ###############位元運算子  256頁
 ######################################12.1
-import unicodedata
-mystery = "\U0001f4a9"  #大便=\U0001f4a9
-print(mystery)
-print(unicodedata.name(mystery)) # 一大堆便便
-######################################12.2
-pop_bytes = mystery.encode("utf-8")
-print(pop_bytes)
-######################################12.3
-pop_string = pop_bytes.decode("utf-8") ##也能印出大便
-print(pop_string)
-######################################12.4
-mammoth = """
-We have seen thee, queen of cheese,
-Lying quietly at your ease,
-Gently fanned by evening breeze,
-Thy fair form no flies dare seize.
+# import unicodedata
+# mystery = "\U0001f4a9"  #大便=\U0001f4a9
+# print(mystery)
+# print(unicodedata.name(mystery)) # 一大堆便便
+# ######################################12.2
+# pop_bytes = mystery.encode("utf-8")
+# print(pop_bytes)
+# ######################################12.3
+# pop_string = pop_bytes.decode("utf-8") ##也能印出大便
+# print(pop_string)
+# ######################################12.4
+# mammoth = """
+# We have seen thee, queen of cheese,
+# Lying quietly at your ease,
+# Gently fanned by evening breeze,
+# Thy fair form no flies dare seize.
 
-All gaily dressed soon you'll go
-To the great Provincial show,
-To be admired by many a beau
-In the city of Toronto.
+# All gaily dressed soon you'll go
+# To the great Provincial show,
+# To be admired by many a beau
+# In the city of Toronto.
 
-Cows numerous as a swarm of bees,
-Or as the leaves upon the trees,
-It did reuire to make thee pleace,
-And stand unrivalled, queen of cheese.
+# Cows numerous as a swarm of bees,
+# Or as the leaves upon the trees,
+# It did reuire to make thee pleace,
+# And stand unrivalled, queen of cheese.
 
-May you not receive a scar as 
-We have heard that Mr. Harris
-Intends to send you off as far as
-The great world's show at paris.
+# May you not receive a scar as 
+# We have heard that Mr. Harris
+# Intends to send you off as far as
+# The great world's show at paris.
 
-Of the youth beware of these,
-For some of them might rudely squeeze
-And bite your cheek, then songs or glees
-We could not sing, oh! queen of cheese.
+# Of the youth beware of these,
+# For some of them might rudely squeeze
+# And bite your cheek, then songs or glees
+# We could not sing, oh! queen of cheese.
 
-We'rt thou suspended from balloon,
-You'd cast a shade even at noon,
-Folks would think it was the moon
-About to fall and crush them soon.
-"""
-####################################12.5
-import re
-pat = r"\bc\w*"                   #r"\b(e)搜尋
-print(re.findall(pat, mammoth))
-pat = r"\ba\w*"
-print(re.findall(pat, mammoth))
-####################################12.6
-pat = r"\bc\w{3}\b"    #### {3} 找出所有C開頭的四字母單字
-print(re.findall(pat, mammoth))
-pat = r"\bc\w{3}"      #### {3} 取得C開頭所有單字的前四個字母  .chee.se
-print(re.findall(pat, mammoth))
-####################################12.7
-pat = r"\b\w*r\b"    ##取得結尾是r的單字的正確結果
-print(re.findall(pat, mammoth))
-pat = r"\b\w*1\b"   ##取得結尾是l的單字不太理想
-print(re.findall(pat, mammoth))
-pat = r"\b[\w']*l\b" ###正確取得11
-print(re.findall(pat, mammoth))
-pat = r'\b[\w\']*l\b'###正確取得11
-print(re.findall(pat, mammoth))
-pat = r"\b[\w\']*l\b"###正確取得11(外面用雙引號,裡面用單引號)
-print(re.findall(pat, mammoth))
-####################################12.8 取得三個母音
-pat = r'\b[^aeiou]*[aeiou]{3}[^aeiou]*\b' #取得單字有三個母音 (,在前面)
-print(re.findall(pat, mammoth))
-pat = r'\b\w*[aeiou]{3}[^aeiou\s]\w*\b'
-print(re.findall(pat, mammoth))   #######這次沒找到beau   (,在後面)
-pat = r'\b\w*[aeiou]{3}[^aeiou\s]*\w*\b'
-print(re.findall(pat, mammoth))   ###這次印出非常正確
-###12.9 unhexlify來將這個十六進制字串,因為頁寬的關係切成兩個字串,轉換成bytes變數gif
-import binascii
-hex_str = '47494638396101000100800000000000ffffff21f9' + \
-    '0401000000002c000000000100010000020144003b'
-gif = binascii.unhexlify(hex_str)
-###########################12.10
-print(len(gif))
-print(gif[:6] == b"GIF89a") #True
-print(gif[:6] == "GIF89a")  #False
-print(type(gif))
-print(type("GIF89a"))
-print(type(b"GIF89a"))
-########################12.11
-import struct
-width, height = struct.unpack("<HH", gif[6:10])
-print(width, height)
+# We'rt thou suspended from balloon,
+# You'd cast a shade even at noon,
+# Folks would think it was the moon
+# About to fall and crush them soon.
+# """
+# ####################################12.5
+# import re
+# pat = r"\bc\w*"                   #r"\b(e)搜尋
+# print(re.findall(pat, mammoth))
+# pat = r"\ba\w*"
+# print(re.findall(pat, mammoth))
+# ####################################12.6
+# pat = r"\bc\w{3}\b"    #### {3} 找出所有C開頭的四字母單字
+# print(re.findall(pat, mammoth))
+# pat = r"\bc\w{3}"      #### {3} 取得C開頭所有單字的前四個字母  .chee.se
+# print(re.findall(pat, mammoth))
+# ####################################12.7
+# pat = r"\b\w*r\b"    ##取得結尾是r的單字的正確結果
+# print(re.findall(pat, mammoth))
+# pat = r"\b\w*1\b"   ##取得結尾是l的單字不太理想
+# print(re.findall(pat, mammoth))
+# pat = r"\b[\w']*l\b" ###正確取得11
+# print(re.findall(pat, mammoth))
+# pat = r'\b[\w\']*l\b'###正確取得11
+# print(re.findall(pat, mammoth))
+# pat = r"\b[\w\']*l\b"###正確取得11(外面用雙引號,裡面用單引號)
+# print(re.findall(pat, mammoth))
+# ####################################12.8 取得三個母音
+# pat = r'\b[^aeiou]*[aeiou]{3}[^aeiou]*\b' #取得單字有三個母音 (,在前面)
+# print(re.findall(pat, mammoth))
+# pat = r'\b\w*[aeiou]{3}[^aeiou\s]\w*\b'
+# print(re.findall(pat, mammoth))   #######這次沒找到beau   (,在後面)
+# pat = r'\b\w*[aeiou]{3}[^aeiou\s]*\w*\b'
+# print(re.findall(pat, mammoth))   ###這次印出非常正確
+# ###12.9 unhexlify來將這個十六進制字串,因為頁寬的關係切成兩個字串,轉換成bytes變數gif
+# import binascii
+# hex_str = '47494638396101000100800000000000ffffff21f9' + \
+#     '0401000000002c000000000100010000020144003b'
+# gif = binascii.unhexlify(hex_str)
+# ###########################12.10
+# print(len(gif))
+# print(gif[:6] == b"GIF89a") #True
+# print(gif[:6] == "GIF89a")  #False
+# print(type(gif))
+# print(type("GIF89a"))
+# print(type(b"GIF89a"))
+# ########################12.11
+# import struct
+# width, height = struct.unpack("<HH", gif[6:10])
+# print(width, height)
+#####################################259 260 261 262 
+###############閏年
+# import calendar
+# print(calendar.isleap(1900))
+# import calendar
+# print(calendar.isleap(1906))
+# import calendar
+# print(calendar.isleap(1999))
+# import calendar
+# print(calendar.isleap(2000))
+# import calendar
+# print(calendar.isleap(2002))
+# import calendar
+# print(calendar.isleap(2004))
+############datetime模組 dat
+###用date 來處理年 , 月與日
+###用time 來處理小時, 分鐘, 秒與分數(fraction)
+###用datetime 來一併處理日期與時間
+###用timedelte來處理日期與/或時間間隔
+# from datetime import date
+# halloween = date(2019, 10, 31)
+# print(halloween)  #印出2019-10-31
+# print(halloween.day) #印出31
+# print(halloween.month) #印出10
+# print(halloween.year)  #印出2019
+# ########可以用date的isoformat()來將日期印出:
+# print(halloween.isoformat()) #2019-10-31
+# from datetime import date
+# now = date.today()
+# print(now)  #印出現在日期
+# ###用timedelta物件為date日期加上一段時間間隔
+# from datetime import timedelta
+# one_day = timedelta(days = 1)
+# tomorrow = now + one_day
+# print(tomorrow) ###印出現在日期加上明天
+# print(now + 17*one_day) ###印出現在日期加上17天
+# yesterday = now - one_day
+# print(yesterday)   ###印出現在日期減少一天
+###datetime模組的time物件的用途是代表一天中的時間
+# from datetime import time
+# noon = time(12, 0, 1)
+# print(noon)  ###印出上面編寫時間
+# print(noon.hour) ##12點
+# print(noon.minute) ##0分
+# print(noon.second) ##1秒
+# print(noon.microsecond) ##0微秒
+###datetime物件同包含日期與一天的時間
+# from datetime import datetime
+# some_day = datetime(2019, 1, 2, 3, 4, 5, 6)
+# print(some_day) ###印出2019-01-02 03:04:05.000006
+# ###datetime物件也有isoformat()方法
+# print(some_day.isoformat()) ###印出2019-01-02 03:04:05.000006 它用中間T來分隔日期
+###datetime有個now()方法可回傳目前的日期與時間
+# from datetime import datetime
+# now = datetime.now()
+# print(now)   ###印出現在時間  年.月.日.時.分.秒.微秒
+# print(now.year) ###印出現在年份
+# print(now.month) ###印出現在月份
+# print(now.day)  ###印出現在 天
+# print(now.hour) ###印出現在 小時
+# print(now.minute) ###印出現在 分鐘
+# print(now.second) ###印出現在 秒
+# print(now.microsecond)  ###印出現在 微秒
+######可以將一個date與一個time物件 combine() (結合) 成一個datetime
+from datetime import datetime, time, date
+noon = time(1)
+this_day = date.today()
+noon_today = datetime.combine(this_day, noon)
+print(noon_today)  ###印出現在日期,上面noon = time () 可以調整幾點
+######可以用date()與time()方法從datetime中取出date與time:
+print(noon_today.date()) ###只印出現在日期
+print(noon_today.time()) ###只印出現在時間
