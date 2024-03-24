@@ -2534,7 +2534,7 @@ life = {
 # import struct
 # width, height = struct.unpack("<HH", gif[6:10])
 # print(width, height)
-#####################################259 260 261 262 
+#####################################259 260 261 262  263 
 ###############閏年
 # import calendar
 # print(calendar.isleap(1900))
@@ -2597,12 +2597,45 @@ life = {
 # print(now.minute) ###印出現在 分鐘
 # print(now.second) ###印出現在 秒
 # print(now.microsecond)  ###印出現在 微秒
-######可以將一個date與一個time物件 combine() (結合) 成一個datetime
-from datetime import datetime, time, date
-noon = time(1)
-this_day = date.today()
-noon_today = datetime.combine(this_day, noon)
-print(noon_today)  ###印出現在日期,上面noon = time () 可以調整幾點
-######可以用date()與time()方法從datetime中取出date與time:
-print(noon_today.date()) ###只印出現在日期
-print(noon_today.time()) ###只印出現在時間
+# ######可以將一個date與一個time物件 combine() (結合) 成一個datetime
+# from datetime import datetime, time, date
+# noon = time(1)
+# this_day = date.today()
+# noon_today = datetime.combine(this_day, noon)
+# print(noon_today)  ###印出現在日期,上面noon = time () 可以調整幾點
+# ######可以用date()與time()方法從datetime中取出date與time:
+# print(noon_today.date()) ###只印出現在日期 
+# print(noon_today.time()) ###只印出上面的時間
+# # #######使用time模組
+# import time
+# now = time.time() 
+# print(now) #從1970年1月1日算起的秒數到現在
+# ###可以用ctime()來將epoch值轉換成字串
+# print(time.ctime(now)) ###印出現在時間 Sun Mar 24 23:51:01 2024
+# print(time.localtime(now))##印出現在時間 tm_year=2024, tm_mon=3, tm
+# print(time.gmtime(now))   ##印出現在時間  但時區
+#tm_yea 年 0000-9999, #tm_mon 月 1-12,  #tm_mday 一月的日期 1-31
+#tm_hour 小時 0-23,   #tm_min 分鐘 0-59, #tm_sec  秒 0-60
+#tm_wday 一週的星期幾 (Monday)-(Sunday), #tm_yday 一年的第幾天 1-365
+#tm_isdst 日光節約 0 = 不是,  1 = 是,   -1 = 不明
+# import time 
+# now = time.localtime()
+# print(now)  #跟print(time.localtime(now)) 一樣
+# print(now[0]) ###印出現在年份
+# print(list(now[x] for x in range(9)))#印出現在時間[2024, 3, 25, 0, 2, 10, 0, 85, 0]
+# now = time.time()  ########書上少這一行
+# tm = time.localtime(now)
+# print(time.mktime(tm)) ##1711296347.0
+#######讀取與寫入日期與時間
+import time 
+now = time.time()
+print(time.ctime(now))###印出現在時間Mon Mar 25 00:09:19 2024
+#%Y 年 1900...., #%m 月 01-12, #%B 月名稱 January,  #%b 月縮寫 Jan..,
+#%d 月日期 1-31,  #%A 星期幾名稱 Sunday, %a 星期幾縮寫 sun, 
+#%H 小時(24小時) 00-23, #%I 小時(12小時) 01-12, #%p AM/PM AM.PM,
+#%M 分 00-59, #%S 秒 00-59,
+import time
+fmt = "It's %A, %B %d, %Y, local time %I:%M:%S%p"
+t = time.localtime()
+print(t) ###印出現在時間tm_year=2024, tm_mon=3, tm_mday=25, tm_hour=0
+print(time.strftime(fmt, t))#It's Monday, March 25, 2024, local time 12:18:13AM
