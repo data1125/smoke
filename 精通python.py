@@ -2627,15 +2627,79 @@ life = {
 # tm = time.localtime(now)
 # print(time.mktime(tm)) ##1711296347.0
 #######讀取與寫入日期與時間
-import time 
-now = time.time()
-print(time.ctime(now))###印出現在時間Mon Mar 25 00:09:19 2024
-#%Y 年 1900...., #%m 月 01-12, #%B 月名稱 January,  #%b 月縮寫 Jan..,
-#%d 月日期 1-31,  #%A 星期幾名稱 Sunday, %a 星期幾縮寫 sun, 
-#%H 小時(24小時) 00-23, #%I 小時(12小時) 01-12, #%p AM/PM AM.PM,
-#%M 分 00-59, #%S 秒 00-59,
-import time
-fmt = "It's %A, %B %d, %Y, local time %I:%M:%S%p"
-t = time.localtime()
-print(t) ###印出現在時間tm_year=2024, tm_mon=3, tm_mday=25, tm_hour=0
-print(time.strftime(fmt, t))#It's Monday, March 25, 2024, local time 12:18:13AM
+# import time 
+# now = time.time()
+# print(time.ctime(now))###印出現在時間Mon Mar 25 00:09:19 2024
+## %Y 年 1900...., #%m 月 01-12, #%B 月名稱 January,  #%b 月縮寫 Jan..,
+## %d 月日期 1-31,  #%A 星期幾名稱 Sunday, %a 星期幾縮寫 sun, 
+## %H 小時(24小時) 00-23, #%I 小時(12小時) 01-12, #%p AM/PM AM.PM,
+## %M 分 00-59, #%S 秒 00-59,
+# import time
+# fmt = "It's %A, %B %d, %Y, local time %I:%M:%S%p"
+# t = time.localtime()
+# print(t) ###印出現在時間tm_year=2024, tm_mon=3, tm_mday=25, tm_hour=0
+# print(time.strftime(fmt, t))#It's Monday, March 25, 2024, local time 12:18:13AM
+# ########來處理 date 物件 就只有日期的部分有效,時間會被預設為午夜
+# from datetime import date
+# some_day = date(2024, 3, 25)
+# fmt = "It's %A, %B %d, %Y, local time %I:%M:%S%p"
+# print(some_day.strftime(fmt))#It's Monday, March 25, 2024, local time 12:00:00AM
+# ######處理time物件時,它時會轉換時間的部分
+# from datetime import time
+# fmt = "It's %A, %B %d, %Y, local time %I:%M:%S%p"
+# some_time = time(10, 35)#你不會使用time物件的日期部分,因為它們沒有任何意義
+# print(some_time.strftime(fmt))#It's Monday, January 01, 1900, local time 10:35:00AM
+# import time 
+# fmt = "%Y-%m-%d"
+# print(time.strptime("2024 03 25", fmt)) ##少 2024-03-25會是錯誤
+# import time
+# fmt = "%Y-%m-%d" ###這是正確的
+# print(time.strptime("2024-03-25", fmt))#It's Monday, January 01, 1900, local time 10:35:00AM
+# ###修改fmt字串來讓它符合日期字串
+# import time 
+# fmt = "%Y %m %d"  #少 -
+# print(time.strptime("2024 03 25", fmt))#time.struct_time(tm_year=2024, tm_mon=3, tm_mday=25, tm_hour=0, tm_min=0, tm_sec=0, tm_wday=0, tm_yday=85, tm_isdst=-1)
+# print(time.strptime("2024-03-25", fmt))##格式不同 %Y少- print就不能用 -
+# import locale
+# from datetime import date 
+# halloween = date(2019, 10, 31)
+# for lang_country in ["en_us", "fr_fr", "de_de", "es_es", "is_is",]:
+#     locale.setlocale(locale.LC_TIME, lang_country)
+#     print(halloween.strftime("%A, %B %d"))#印出各國日期語言
+# ###怎麼找到這些神奇的lang_country值? 有好幾百個
+# import locale
+# names = locale.locale_alias.keys()
+# good_names = [name for name in names if \
+# len(name) ==5 and name[2] == "_"]
+# print(good_names[:5])
+# ####想要取得所有的德語語言環境 可以試試
+# de = [name for name in good_names if name. startswith("de")]
+# print(de)
+# ##     其他的模組 
+# ##arrow 用簡單API許多日期與時間函式
+# ##dateutil 可以解析幾乎所有日期格式
+# ##iso8601 他可以填補ISO8601格式的標準式庫的不足
+# ##fleming 有許多時區函式
+# ##maya 處理日期, 時間, 時間間隔的值觀介面
+# ##dateinfer 可以猜測日期/時間字串的格式字串
+#############################13.1
+from datetime import datetime, date
+import datetime
+now = date.today()
+now_str = now.isoformat()
+with open("today.txt", "wt") as output:
+    print(now_str, file = output)  #會自動建立today.txt檔案 現在日期
+#############################13.2
+with open("today.txt", "rt") as input:
+    today_string = input.read()
+
+print(repr(today_string)) ##印出現在日期
+#############################13.3
+from datetime import datetime
+fmt = "%Y-%m-%d\n"  ##跟書上不一樣
+today_string = "2024-03-26\n"  # 注意空格和连字符
+print(repr(datetime.strptime(today_string, fmt)))
+#############################13.4
+my_day = date(1983, 11, 25)
+print(repr(my_day))  ###要加上repr才會印出datetime.date(1983.11.25)
+
