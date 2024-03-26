@@ -2534,7 +2534,7 @@ life = {
 # import struct
 # width, height = struct.unpack("<HH", gif[6:10])
 # print(width, height)
-#####################################259 260 261 262  263 
+#####################################259 --- 271
 ###############閏年
 # import calendar
 # print(calendar.isleap(1900))
@@ -2683,23 +2683,37 @@ life = {
 # ##maya 處理日期, 時間, 時間間隔的值觀介面
 # ##dateinfer 可以猜測日期/時間字串的格式字串
 #############################13.1
-from datetime import datetime, date
-import datetime
-now = date.today()
-now_str = now.isoformat()
-with open("today.txt", "wt") as output:
-    print(now_str, file = output)  #會自動建立today.txt檔案 現在日期
-#############################13.2
-with open("today.txt", "rt") as input:
-    today_string = input.read()
+# from datetime import datetime, date
+# import datetime
+# now = date.today()
+# now_str = now.isoformat()
+# with open("today.txt", "wt") as output:
+#     print(now_str, file = output)  #會自動建立today.txt檔案 現在日期
+# #############################13.2
+# with open("today.txt", "rt") as input:
+#     today_string = input.read()
 
-print(repr(today_string)) ##印出現在日期
-#############################13.3
-from datetime import datetime
-fmt = "%Y-%m-%d\n"  ##跟書上不一樣
-today_string = "2024-03-26\n"  # 注意空格和连字符
-print(repr(datetime.strptime(today_string, fmt)))
-#############################13.4
-my_day = date(1983, 11, 25)
-print(repr(my_day))  ###要加上repr才會印出datetime.date(1983.11.25)
-
+# print(repr(today_string)) ##印出現在日期
+# #############################13.3
+# from datetime import datetime
+# fmt = "%Y-%m-%d\n"  ##跟書上不一樣
+# today_string = "2024-03-26\n"  # 注意空格和连字符
+# print(repr(datetime.strptime(today_string, fmt)))
+# #############################13.4
+# my_day = date(1983, 11, 25)
+# print(repr(my_day))  ###要加上repr才會印出datetime.date(1983.11.25)
+# #############################13.5
+# print(my_day.weekday()) #我出生是星期幾 星期一是0  星期天是6
+# print(my_day.isoweekday())#我出生是星期幾 星期一是1  星期天是7
+# #############################13.6
+# from datetime import timedelta
+# party_day = my_day + timedelta(days = 10000)  #我的生日+10000
+# print(party_day)
+###################################十四章 274
+##########用open()建立或開啟
+fout = open("oops.txt", "wt")
+print(fout.close())
+##########用print()來寫入文字檔
+fout = open("oops.txt", "wt")
+print("Oops, I created a file.", file=fout)
+print(fout.close())
