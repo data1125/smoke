@@ -2711,9 +2711,109 @@ life = {
 # print(party_day)
 ###################################十四章 274
 ##########用open()建立或開啟
-fout = open("oops.txt", "wt")
+# fout = open("oops.txt", "wt")
+# print(fout.close())
+# ##########用print()來寫入文字檔
+# fout = open("oops.txt", "wt")
+# print("Oops, I created a file.", file=fout)
+# print(fout.close())
+##########用write()來寫入文字檔
+poem =""" There was a young lady named Bright,
+Whose speed was far faster than light;
+She started one day 
+In a rekative way,
+And returned on the previous night."""
+# print(len(poem))
+# fout = open("relativity", "wt")
+# fout.write(poem) ##將poem文字寫入relativity檔裡面
+# print(fout.close())
+# ######byteb數量
+# fout = open("多強", "wt")
+# print(poem, file=fout)
+# print(fout.close())
+######將使用空字串來替換這些預設值
+# fout = open("relativity", "wt")
+# print(poem, file=fout, sep= "", end='')
+# print(fout.close())
+######來源字串很大,也可以分段寫入(使用slice),直到完為止
+# fout = open("relativity", "wt")
+# size = len(poem)
+# offset = 0
+# chunk = 100
+# while True:
+#     if offset > size:
+#         break
+#     fout.write(poem[offset:offset+chunk])
+#     offset += chunk
+# print(fout.close())
+#####如果relativity檔案很重要,來看看使用x模式可不可以防止我覆寫它
+# fout = open("relativity", "xt")
+#####同時使用例外處理程式
+# try:
+#     fout = open("relativity", "xt")
+#     fout.write("stomp stomp stomp")
+# except FileExistsError:
+#     print("relativity already exists!. That was a close one.")
+#####用read(), readline()或readlines()讀取文字檔
+# fin = open("relativity", "rt")
+# poem = fin.read()
+# fin.close()
+# print(len(poem))
+####用read()限制每次回傳的數量,每次讀取100個字元
+# poem = ""
+# fin = open("relativity", "rt")
+# chunk = 100
+# while True:
+#     fragment = fin.read(chunk)
+#     if not fragment:
+#         break
+#     poem += fragment
+# fin.close()
+# print(poem)
+#####使用readline()來一次讀取一行,接下來範例將每一行文字附加到poem字串
+# poem = ""
+# fin = open("relativity", "rt")
+# while True:
+#     line = fin.readline()
+#     if not line:
+#         break
+#     poem += line
+# fin.close()
+# print(poem)
+######讀取文字檔最簡單的方式使用*迭代器*.它會一次回傳一行
+# poem = ""
+# fin = open("relativity", "rt")
+# for line in fin:
+#     poem += line
+# fin.close()
+# print(poem)
+#####poem.readline()呼叫式會每次讀取一行
+# fin = open("relativity", "rt")
+# lines = fin.readlines()
+# fin.close()
+# print(len(lines), "lines read") ##顯示有幾行 5 lines read
+# for line in lines:
+#     print(line, end= "")
+######用write()來寫入二進制檔案  字串中加入"b"
+bdata = bytes(range(0, 256))
+# print(len(bdata)) ##印出256
+######用二進制開啟檔案,並一次寫入所有資料
+fout = open("bfile", "wb")
+fout.write(bdata)
+fout.close()
+######同樣地,write()會回傳被寫入的byte數量
+fout = open("bfile", "wb")
+size = len(bdata)
+offset = 0
+chunk = 100
+while True:
+    if offset > size:
+        break
+    fout.write(bdata[offset:offset+chunk])
+    offset += chunk
 print(fout.close())
-##########用print()來寫入文字檔
-fout = open("oops.txt", "wt")
-print("Oops, I created a file.", file=fout)
-print(fout.close())
+#####用read()讀取二進制檔案
+fin = open("bfile", "rb")
+bdata = fin.read()
+print(len(bdata))
+print(fin.close())
